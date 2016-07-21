@@ -53,7 +53,7 @@ class Tabs extends Component {
               selectedTab : 'newsfeed'
             })
           }}>
-          <NewsFeedScreen />
+          <NewsFeedScreen navigator={this.props.navigator}/>
         </TabBarIOS.Item>
 
         <TabBarIOS.Item

@@ -8,31 +8,69 @@ import {
 } from 'react-native';
 import SplashScreen from './SplashScreen/Splash'
 import Tabs from './Tabs'
-import Post from './Post'
+
+const NavigatorMapper = {
+	LeftButton(route, navigator, index){
+		if(index == 0 || route.name =='Profile'){
+			return null
+		}
+		return(
+			<TouchableHighlight onPress={() => {
+				if(index > 0){
+					navigator.pop();
+				}
+			}}>
+				<Text style={{marginTop:10, marginLeft:20, color:'#FFFFFF'}}>뒤로</Text>
+			</TouchableHighlight>
+		)
+	},
+	RightButton(route, navigator, index){
+		return null
+	},
+	Title(route, navigator, index){
+		if(route.name =='Profile'){
+			return null
+		}
+		return(
+			<Text style={{marginTop: 7, color:'#FFFFFF'}}>{route.name}</Text>
+		);
+	}
+}
 
 
 class App extends Component{
+	renderScene(route,navigator){
+		switch (route.name) {
+			case 'NewsFeedScreen':
+				return(
+					<Tabs {...route.props} navigator={navigator} route={route} />
+				)
+		}
+	}
   render(){
     return(
       <SplashScreen logo={require('../Assets/logo.png')} duration={2000} backgroundColor={styles.splash}>
-        <Tabs />
+				<Navigator
+					style={{backgroundColor:'#fff'}}
+					initialRoute={{name: 'NewsFeedScreen'}}
+					renderScene={this.renderScene}
+					configureScene={(route) => {
+						if(route.sceneConfig){
+							return route.sceneConfig;
+						}
+						return Navigator.SceneConfigs.FloatFromRight;
+					}}
+					navigationBar={
+						<Navigator.NavigationBar
+							routeMapper={NavigatorMapper}
+							style={{backgroundColor: '#5e5e5e', height: 50}} />
+					} />
       </SplashScreen>
     );
   }
 }
 
 const styles = StyleSheet.create({
-  container: {
-		flex: 1,
-		justifyContent: 'center',
-		alignItems: 'center',
-		backgroundColor: '#F5FCFF',
-	},
-	welcome: {
-		fontSize: 20,
-		textAlign: 'center',
-		margin: 10,
-	},
 	splash: {
 		backgroundColor:'#5E5E5E'
 	}
