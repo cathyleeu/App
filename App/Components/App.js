@@ -41,18 +41,19 @@ const NavigatorMapper = {
 class App extends Component{
 	renderScene(route,navigator){
 		switch (route.name) {
-			case 'NewsFeedScreen':
+			case 'Enactus': //네비게이션 이름 설정
 				return(
 					<Tabs {...route.props} navigator={navigator} route={route} />
 				)
 		}
 	}
+	// initialRoute={{name: 'Enactus'}} Tabs.js의 initialRoute와 동일해야함
   render(){
     return(
       <SplashScreen logo={require('../Assets/logo.png')} duration={2000} backgroundColor={styles.splash}>
 				<Navigator
 					style={{backgroundColor:'#fff'}}
-					initialRoute={{name: 'NewsFeedScreen'}}
+					initialRoute={{name: 'Enactus'}} 
 					renderScene={this.renderScene}
 					configureScene={(route) => {
 						if(route.sceneConfig){
