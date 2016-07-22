@@ -29,23 +29,22 @@ class NewsFeedList extends Component {
   renderFeed() {
     return (
       <View style={styles.feedsListView}>
-      <View style={styles.feedContainer}>
-        <View style={styles.feedTopContainer}>
-          <Image
-            source={require('../Assets/user.png')}
-            style={styles.userImage}
-            />
-          <View style={styles.feedTextContainer}>
-            <View style={styles.feedUserContainer}>
-              <Text style={styles.feedUser}>이고은</Text>
+        <View style={styles.feedContainer}>
+          <View style={styles.feedTopContainer}>
+            <Image
+              source={require('../Assets/user.png')}
+              style={styles.userImage}
+              />
+            <View style={styles.feedTextContainer}>
+              <View>
+                <Text style={styles.feedUser}>이고은</Text>
+                <Text style={styles.feedUserTime}>7/22 2:28pm</Text>
+              </View>
               <Text style={styles.feedUserUniv}>인액터스 대학교</Text>
-              <Text style={styles.feedUserTime}>7/22 2:28pm</Text>
             </View>
-            <Text style={styles.feedText}>엄훠 인액터스 앱이 생기다니!</Text>
           </View>
+          <View style={styles.ctxContainer}><Text>엄훠 인액터스 앱이 생기다니!</Text></View>
         </View>
-
-      </View>
       </View>
     );
   }
@@ -87,20 +86,25 @@ const styles = StyleSheet.create({
    flexDirection: 'column'
   },
   feedContainer: {
+    borderWidth: 1,
+    borderColor: 'black',
     backgroundColor: 'transparent',
     flexDirection: 'column',
-    paddingHorizontal: 10,
+    paddingHorizontal: 30,
     paddingVertical: 0,
     marginTop: 0,
     marginBottom: 10
   },
   feedTopContainer: {
+    borderWidth: 1,
+    borderColor: 'black',
     flex: 1,
     backgroundColor: 'transparent',
     flexDirection: 'row',
     alignItems: 'center',
     paddingVertical: 0,
     marginTop: 0,
+    height: 50
   },
   userImage: {
     width: 50,
@@ -109,10 +113,22 @@ const styles = StyleSheet.create({
     marginBottom: 10
   },
   feedTextContainer: {
+    borderColor: 'black',
+    borderWidth: 1,
     backgroundColor: 'transparent',
     flexDirection: 'column',
     flex: 1,
-    marginHorizontal: 10,
+    marginHorizontal: 15,
+  },
+  ctxContainer:{
+    marginTop:10,
+    borderColor: 'black',
+    borderWidth: 1,
+    backgroundColor: 'transparent',
+    flex: 1,
+    flexDirection: 'column',
+    marginHorizontal: 15,
+    marginBottom: 10
   },
   feedUserContainer: {
     backgroundColor: 'transparent',
@@ -128,7 +144,6 @@ const styles = StyleSheet.create({
   feedUserUniv: {
     fontFamily: 'Avenir',
     fontSize: 11,
-    marginLeft: 5
   },
   feedUserTime: {
     fontFamily: 'Avenir',
@@ -136,7 +151,7 @@ const styles = StyleSheet.create({
     marginLeft: 80
   },
   feedText:{
-    marginTop: -4,
+    marginTop: 10,
     fontFamily: 'Avenir',
     fontSize: 14,
   },
