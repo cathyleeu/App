@@ -6,6 +6,7 @@ import {
   Image,
   TextInput,
   Text,
+  CameraRoll,
   View,
   TouchableHighlight
 } from 'react-native';
@@ -13,24 +14,27 @@ import Util from './utils';
 import Icon from 'react-native-vector-icons/Ionicons';
 
 class Post extends Component {
-  constructor(props) {
-    super(props);
-
+  constructor(){
+    super()
     this.state = {
-      num: 0,
-      selected: [],
-    };
+      images: [],
+    }
   }
-  getSelectedImages(images, current) {
-    var num = images.length;
-
+  componentDidMount(){
+    const fetchParams = {
+      first: 4
+    }
+    CameraRoll.getPhotos(fetchParams).done((data) => this.storeImages(data), (err) => this.logImageError(err))
+  }
+  storeImages(data) {
+    const assets = data.edges;
+    const images = assets.map((asset) => asset.node.image);
     this.setState({
-      num: num,
-      selected: images,
-    });
-
-    console.log(current);
-    console.log(this.state.selected);
+      images: images,
+    })
+  }
+  logImageError(err){
+    console.log(err)
   }
   render() {
     return (
@@ -59,6 +63,10 @@ class Post extends Component {
               </TouchableHighlight>
             </View>
           </View>
+          <View style={styles.imageGrid}>
+            <View style={styles.imageIcon}><Icon name="ios-camera" size={80} color="#a9a9a9" /></View>
+          </View>
+          {this.state.images.map((image, index) => <View key={index} style={styles.imageIcon}><Image style={styles.image} source={{ uri: image.uri }} /></View>)}
         </View>
       </View>
     );
