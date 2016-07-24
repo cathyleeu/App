@@ -40,7 +40,7 @@ class Post extends Component {
     return (
       <View style={styles.container}>
         <View style={styles.iconContainer}>
-          <Image style={styles.icon} source={{uri:'icon'}}></Image>
+          <Image style={styles.icon} source={require('../Assets/user.png')}></Image>
         </View>
         <TextInput
           ref="textarea"

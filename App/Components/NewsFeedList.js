@@ -6,6 +6,7 @@ import {
   Text,
   Image,
   ListView,
+  ScrollView,
   View
 } from 'react-native';
 import Swiper from 'react-native-swiper'
@@ -107,11 +108,11 @@ class NewsFeedList extends Component {
   // }
   render(){
     return(
-      <View style={styles.rootContainer}>
+      <ScrollView style={styles.rootContainer}>
         {this.renderSlide()}
         {this.renderFeed()}
         {this.renderFeed2()}
-      </View>
+      </ScrollView>
     )
   }
 }
