@@ -65,8 +65,8 @@ class Post extends Component {
           </View>
           <View style={styles.imageGrid}>
             <View style={styles.imageIcon}><Icon name="ios-camera" size={80} color="#a9a9a9" /></View>
+            {this.state.images.map((image, index) => <View key={index} style={styles.imageIcon}><Image style={styles.image} source={{ uri: image.uri }} /></View>)}
           </View>
-          {this.state.images.map((image, index) => <View key={index} style={styles.imageIcon}><Image style={styles.image} source={{ uri: image.uri }} /></View>)}
         </View>
       </View>
     );
@@ -98,7 +98,7 @@ const styles = StyleSheet.create({
    height:275,
    width:375,
    position:"absolute",
-   bottom:0,
+   bottom:50,
    left:0,
    borderTopWidth:1,
    borderTopColor:"#a0adb7"
@@ -163,7 +163,7 @@ const styles = StyleSheet.create({
  },
  image:{
    width: Util.size.width/3,
-   height:113,
+   height:113
  },
 });
 
