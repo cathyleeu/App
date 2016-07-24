@@ -54,8 +54,8 @@ class Post extends Component {
               <Icon name="ios-image" size={23} color="#8899a5" />
             </View>
             <View style={styles.funcBtn}>
-              <TouchableHighlight style={styles.btn}>
-                <Text style={styles.btnText}>Post</Text>
+              <TouchableHighlight style={styles.activeBtn}>
+                <Text style={styles.activeBtnText}>Post</Text>
               </TouchableHighlight>
             </View>
           </View>
@@ -129,7 +129,7 @@ const styles = StyleSheet.create({
    alignItems:"center",
    justifyContent:"center",
    borderRadius:6,
-   backgroundColor:"#2aa2ef"
+   backgroundColor:"#E8B11D"
  },
  btnText:{
    color:"#ccd6dd",

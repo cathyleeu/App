@@ -10,7 +10,7 @@ import NewsFeedList from './NewsFeedList'
 class NewsFeedScreen extends Component {
   render() {
     return (
-      <View>
+      <View >
         <NewsFeedList />
       </View>
     );

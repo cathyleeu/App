@@ -8,6 +8,7 @@ import {
 } from 'react-native';
 import SplashScreen from './SplashScreen/Splash'
 import Tabs from './Tabs'
+import Post from './Post'
 
 const NavigatorMapper = {
 	LeftButton(route, navigator, index){
@@ -45,6 +46,10 @@ class App extends Component{
 				return(
 					<Tabs {...route.props} navigator={navigator} route={route} />
 				)
+			case 'Post': //네비게이션 이름 설정
+				return(
+					<Post {...route.props} navigator={navigator} route={route} />
+				)
 		}
 	}
 	// initialRoute={{name: 'Enactus'}} Tabs.js의 initialRoute와 동일해야함
@@ -53,7 +58,7 @@ class App extends Component{
       <SplashScreen logo={require('../Assets/logo.png')} duration={2000} backgroundColor={styles.splash}>
 				<Navigator
 					style={{backgroundColor:'#fff'}}
-					initialRoute={{name: 'Enactus'}} 
+					initialRoute={{name: 'Enactus'}}
 					renderScene={this.renderScene}
 					configureScene={(route) => {
 						if(route.sceneConfig){
