@@ -22,7 +22,7 @@ class Post extends Component {
   }
   componentDidMount(){
     const fetchParams = {
-      first: 4
+      first: 5
     }
     CameraRoll.getPhotos(fetchParams).done((data) => this.storeImages(data), (err) => this.logImageError(err))
   }
