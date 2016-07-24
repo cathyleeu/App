@@ -9,6 +9,7 @@ import {
   View
 } from 'react-native';
 import Swiper from 'react-native-swiper'
+import Icon from 'react-native-vector-icons/Ionicons';
 
 class NewsFeedList extends Component {
   renderSlide(){
@@ -27,6 +28,39 @@ class NewsFeedList extends Component {
     )
   }
   renderFeed() {
+    return (
+      <View style={styles.feedsListView}>
+        <View style={styles.feedContainer}>
+          <View style={styles.feedTopContainer}>
+            <Image
+              source={require('../Assets/user.png')}
+              style={styles.userImage}
+              />
+            <View style={styles.feedInfoContainer}>
+              <Text style={styles.feedUser}>이고은</Text>
+              <Text style={styles.feedUserUniv}>인액터스 대학교</Text>
+            </View>
+            <Text style={styles.feedUserTime}>7/22 2:28pm</Text>
+          </View>
+          <View style={styles.ctxContainer}>
+              <Text style={styles.txtContents}>엄훠 인액터스 앱이 생기다니!</Text>
+          </View>
+          <View style={styles.likeAndcomment}>
+            <View style={styles.funcIcon}>
+              <Icon name="ios-heart-outline" size={23} color="#8899a5" />
+              <Text> 20개 </Text>
+              <Icon name="ios-chatboxes-outline" size={23} color="#8899a5" />
+              <Text> 5개 </Text>
+            </View>
+            <View style={styles.funcShare}>
+              <Icon name="ios-share-outline" size={23} color="#8899a5" />
+            </View>
+          </View>
+        </View>
+      </View>
+    );
+  }
+  renderFeed2() {
     return (
       <View style={styles.feedsListView}>
         <View style={styles.feedContainer}>
@@ -76,6 +110,7 @@ class NewsFeedList extends Component {
       <View style={styles.rootContainer}>
         {this.renderSlide()}
         {this.renderFeed()}
+        {this.renderFeed2()}
       </View>
     )
   }
@@ -151,11 +186,26 @@ const styles = StyleSheet.create({
   feedsListView: {
     paddingTop: 20
   },
-  feedMediaContainer: {
-    backgroundColor: 'transparent',
-    alignSelf: 'center',
-    marginHorizontal: 50,
-    marginBottom: 20
+  likeAndcomment: {
+    alignItems:"center",
+    justifyContent:"space-between",
+    flexDirection:"row",
+    borderTopWidth:1,
+    borderTopColor:"#f2f2f2",
+    paddingVertical: 10,
+    marginHorizontal: 10
+  },
+  funcIcon:{
+    marginLeft: 10,
+    width:120,
+    flexDirection:"row",
+    justifyContent:"space-around"
+  },
+  funcShare:{
+    width:50,
+    flexDirection:"row",
+    justifyContent:"space-around",
+    alignItems:"center",
   },
   slide1: {
       flex: 1,
