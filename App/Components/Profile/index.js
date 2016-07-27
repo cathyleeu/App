@@ -7,12 +7,12 @@ import {
   View
 } from 'react-native';
 
-class Community extends Component {
+class Profile extends Component {
   render() {
     return (
       <View style={styles.container}>
         <Text style={styles.welcome}>
-          for Community
+          for Profile
         </Text>
       </View>
     );
@@ -24,7 +24,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#F5FCFF',
+    backgroundColor: '#FFFFFF',
   },
   welcome: {
     fontSize: 20,
@@ -33,4 +33,5 @@ const styles = StyleSheet.create({
   },
 });
 
-module.exports = Community;
+// module.exports = Profile;
+export default Profile;
