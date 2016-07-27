@@ -12,6 +12,7 @@ import { connect } from 'react-redux';
 import Feeds from '../Feeds';
 import Comments from '../Comments';
 import { actions } from 'react-native-navigation-redux-helpers';
+import Icon from 'react-native-vector-icons/Ionicons';
 
 const {
   popRoute,
@@ -83,9 +84,7 @@ class Feed extends Component {
 				<TouchableHighlight
 					style={styles.buttonContainer}
 					onPress={this._onAddItem.bind(this)}>
-					<Image
-						style={styles.button}
-						source={{uri: 'http://facebook.github.io/react/img/logo_og.png'}} />
+					<Icon style={styles.button} name="ios-create" size={23} color="white" />
 				</TouchableHighlight>
 			);
 		}

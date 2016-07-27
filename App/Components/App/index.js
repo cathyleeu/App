@@ -9,6 +9,7 @@ import React, { Component } from 'react';
 import styles from './styles';
 import GlobalNav from '../GlobalNav';
 
+
 class App extends Component {
 	render() {
 		return (

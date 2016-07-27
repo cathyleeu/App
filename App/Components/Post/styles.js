@@ -5,7 +5,9 @@ export default StyleSheet.create({
   container:{
     paddingTop:30,
     height:Util.size.height,
-    width:Util.size.width
+    width:Util.size.width,
+    flexDirection: 'column',
+    flex: 1,
   },
   icon:{
     width:30,
@@ -18,6 +20,18 @@ export default StyleSheet.create({
     flexDirection:"row",
     justifyContent:"space-between",
   },
+  imageContainer: {
+    flex: 1,
+    width:Util.size.width,
+    height: 339,
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
+  image:{
+    width: Util.size.width/1.5,
+    height: 339,
+
+  },
   textArea:{
     height:335,
     padding:15,
@@ -25,20 +39,21 @@ export default StyleSheet.create({
   },
   funcContainer:{
    width:Util.size.width,
-   height:275,
+  //  height:275,
    position:"absolute",
    bottom:50,
    left:0,
    borderTopWidth:1,
-   borderTopColor:"#a0adb7"
+   borderTopColor:"#a0adb7",
+   backgroundColor: 'white'
  },
  funcIconCon:{
    height:50,
    alignItems:"center",
    justifyContent:"space-between",
    flexDirection:"row",
-   borderBottomWidth:1,
-   borderBottomColor:"#ccd6dd"
+  //  borderBottomWidth:1,
+  //  borderBottomColor:"#ccd6dd"
  },
  funcIcon:{
    width:210,
@@ -76,10 +91,6 @@ export default StyleSheet.create({
    color:"#fff",
    fontSize:14
  },
- imageGrid:{
-   flexDirection:"row",
-   flexWrap:"wrap"
- },
  imageIcon:{
    width: Util.size.width/3,
    height:113,
@@ -90,8 +101,5 @@ export default StyleSheet.create({
    borderRightWidth:1,
    borderBottomWidth:1
  },
- image:{
-   width: Util.size.width/3,
-   height:113
- },
+
 });

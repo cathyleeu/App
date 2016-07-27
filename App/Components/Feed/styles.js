@@ -14,6 +14,5 @@ export default StyleSheet.create({
 		height: 24,
 		width: 24,
 		margin: Platform.OS === 'ios' ? 10 : 16,
-		resizeMode: 'contain'
 	}
 });

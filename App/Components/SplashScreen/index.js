@@ -1,10 +1,6 @@
 import React, { Component } from 'react';
-import {
-  StyleSheet,
-  Text,
-  View,
-  Image
-} from 'react-native';
+import { Text, View, Image } from 'react-native';
+import styles from './styles'
 
 class SplashScreen extends Component {
   constructor(props){
@@ -30,26 +26,11 @@ class SplashScreen extends Component {
       ({...this.props.children})
       :
       // display splash screen
-      (<View style={[styles.container, this.props.backgroundColor]}>
+      (<View style={styles.container}>
           <Image style={styles.logo} source={this.props.logo} resizeMode='contain' />
         </View>)
     );
   }
 }
-
-const styles = StyleSheet.create({
-	container: {
-		flexDirection:'column',
-		flex: 1,
-    justifyContent: 'center',
-	},
-	logo: {
-		flex:1,
-		width:120,
-    justifyContent: 'center',
-    left: 130
-
-	}
-});
 
 export default SplashScreen
