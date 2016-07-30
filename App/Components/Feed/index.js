@@ -5,7 +5,7 @@
 */
 
 import { View, Platform, NavigationExperimental,
-	TouchableHighlight, Image } from 'react-native';
+	TouchableHighlight, Image, Text } from 'react-native';
 import React, { Component } from 'react';
 import styles from './styles';
 import { connect } from 'react-redux';
@@ -26,6 +26,10 @@ const {
 const NavigationHeaderBackButton = require('NavigationHeaderBackButton');
 
 class Feed extends Component {
+	static contextTypes = {
+    drawer: React.PropTypes.object.isRequired,
+  }
+
 	render() {
 		return (
 			<NavigationCardStack
@@ -60,8 +64,8 @@ class Feed extends Component {
 
 	_renderTitleComponent(props) {
 		return (
-			<NavigationHeader.Title>
-				{props.scene.route.title}
+			<NavigationHeader.Title >
+				<Text style={{color: 'white'}}>{props.scene.route.title}</Text>
 			</NavigationHeader.Title>
 		);
 	}
@@ -74,7 +78,15 @@ class Feed extends Component {
 				<NavigationHeaderBackButton onPress={() => dispatch(popRoute(navigation.key))} />
 			);
 		}
-
+		if (props.scene.route.key === 'list') {
+			return (
+				<TouchableHighlight
+					style={styles.buttonContainer}
+					onPress={this.context.drawer.open}>
+					<Icon style={styles.button} name="ios-menu" size={23} color="white" />
+				</TouchableHighlight>
+			);
+		}
 		return null;
 	}
 

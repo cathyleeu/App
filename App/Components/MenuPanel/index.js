@@ -5,7 +5,7 @@ export default class MenuPanel extends Component {
   static propTypes = {
     closeDrawer: PropTypes.func.isRequired
   };
-
+// 메뉴 루트 설정
   render() {
     let {closeDrawer} = this.props
     return (

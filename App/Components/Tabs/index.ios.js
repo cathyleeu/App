@@ -10,6 +10,7 @@ import Icon from 'react-native-vector-icons/Ionicons';
 const { jumpTo } = navigationActions;
 
 class Tabs extends Component {
+	// 탭 key가 '##'라면 이 페이지를 넘겨라는 라우터 설정
 	_renderTabContent(tab) {
 
 		if (tab.key === 'post') {
@@ -32,7 +33,7 @@ class Tabs extends Component {
 
 		return <Text>Hello there</Text>;
 	}
-
+ // 탭 기능 설정
 	render() {
 		const { dispatch, navigation } = this.props;
 		const children = navigation.routes.map( (tab, i) => {
