@@ -18,8 +18,8 @@ const userTestImage = require('../../Assets/user.png')
 const data = [
 	{
 		key: '1',
-		userName: '이고은',
-		userUniv: '인액터스 대학교',
+		userName: '익명',
+		userUniv: '익명 대학교',
 		commentTime: '7/26 1:30pm',
 		description: '인액터스 테스트 입니다.인액터스 테스트 입니다.인액터스 테스트 입니다.인액터스 테스트 입니다.인액터스 테스트 입니다.인액터스 테스트 입니다.인액터스 테스트 입니다.인액터스 테스트 입니다. ',
 	},

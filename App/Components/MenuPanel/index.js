@@ -1,37 +1,112 @@
 import React, { Component,  PropTypes } from 'react';
-import { ScrollView, StyleSheet, Text, TouchableOpacity, View, } from 'react-native'
-
+import { ScrollView, Text, Image, TouchableOpacity,TouchableHighlight, View, } from 'react-native'
+import styles from './styles'
+import Icon from 'react-native-vector-icons/Ionicons';
+import Unknown from '../Unknown'
+import Member from '../Member'
+import Tabs from '../Tabs'
 export default class MenuPanel extends Component {
   static propTypes = {
     closeDrawer: PropTypes.func.isRequired
   };
 // 메뉴 루트 설정
+  constructor(){
+    super()
+    this.state = {
+      page: Tabs
+    }
+  }
+  _getPage(index){
+    let page;
+    switch(index){
+      case 0:
+        page = Tabs;
+        break;
+      case 1:
+        page = Member;
+        break;
+      case 2:
+        page = Unknown;
+        break;
+    }
+    this.setState({
+      page,
+    });
+  }
   render() {
     let {closeDrawer} = this.props
     return (
-      <ScrollView style={styles.container}>
-        <Text style={styles.controlText}>Control Panel</Text>
-        <TouchableOpacity style={styles.button} onPress={closeDrawer}>
-          <Text>Close Drawer</Text>
-        </TouchableOpacity>
-      </ScrollView>
+      <View style={styles.sideMenuContainer}>
+        <View style={styles.control}>
+          <View style={styles.imageCon}>
+            <Image
+              source={require('../../Assets/logo.png')}
+              style={styles.logoimage}/>
+          </View>
+          <TouchableHighlight style={styles.close} onPress={closeDrawer}>
+            <Icon name='ios-close' size={30} color="white" />
+          </TouchableHighlight>
+        </View>
+        <TouchableHighlight underlayColor="#888" onPress={()=>{true}}>
+            <View style={styles.btn}>
+              <Icon style={styles.btnIcon} name="ios-chatbubbles" size={20}></Icon>
+              <Text style={styles.btnText}>뉴스피드</Text>
+            </View>
+        </TouchableHighlight>
+        <TouchableHighlight underlayColor="#888" onPress={()=>{true}}>
+          <View style={styles.btn}>
+            <Icon style={styles.btnIcon} name="md-share" size={20}></Icon>
+            <Text style={styles.btnText}>인액터스 소개</Text>
+          </View>
+        </TouchableHighlight>
+        <TouchableHighlight underlayColor="#888" onPress={()=>{true}}>
+            <View style={styles.btn}>
+              <Icon style={styles.btnIcon} name="md-git-network" size={20}></Icon>
+              <Text style={styles.btnText}>네트워크</Text>
+            </View>
+          </TouchableHighlight>
+          <TouchableHighlight underlayColor="#888" onPress={()=>{true}}>
+              <View style={styles.btn}>
+                <Icon style={styles.btnIcon} name="md-volume-down" size={20}></Icon>
+                <Text style={styles.btnText}>대나무숲</Text>
+              </View>
+          </TouchableHighlight>
+          <TouchableHighlight underlayColor="#888" onPress={()=>{true}}>
+              <View style={styles.btn}>
+                <Icon style={styles.btnIcon} name="md-cloud-download" size={20}></Icon>
+                <Text style={styles.btnText}>아카이브</Text>
+              </View>
+          </TouchableHighlight>
+          <TouchableHighlight underlayColor="#888" onPress={()=>{true}}>
+              <View style={styles.btn}>
+                <Icon style={styles.btnIcon} name="ios-people" size={20}></Icon>
+                <Text style={styles.btnText}>멤버십 소개</Text>
+              </View>
+          </TouchableHighlight>
+          <TouchableHighlight underlayColor="#888" onPress={()=>{true}}>
+              <View style={styles.btn}>
+                <Icon style={styles.btnIcon} name="ios-mail-outline" size={20}></Icon>
+                <Text style={styles.btnText}>1:1 메세지</Text>
+              </View>
+          </TouchableHighlight>
+          <View style={styles.channelCon}>
+            <View style={styles.snsText}>
+              <Text style={{fontSize: 16}}>Enactus Channel</Text>
+            </View>
+            <View style={styles.snsContainer} >
+              <TouchableHighlight>
+                <Image source={require('../../Assets/facebook.png')} style={styles.snsIcon}/>
+              </TouchableHighlight>
+              <TouchableHighlight>
+                <Image source={require('../../Assets/youtube.png')} style={styles.snsIcon} />
+              </TouchableHighlight>
+              <TouchableHighlight>
+                <Image source={require('../../Assets/flickr.png')} style={styles.snsIcon}/>
+              </TouchableHighlight>
+            </View>
+          </View>
+
+      </View>
     )
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    padding: 20,
-    backgroundColor: 'black',
-  },
-  controlText: {
-    color: 'white',
-  },
-  button: {
-    backgroundColor: 'white',
-    borderWidth: 1,
-    borderColor: 'black',
-    padding: 10,
-  }
-})
