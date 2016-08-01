@@ -1,52 +1,18 @@
+'use strict';
 import React, { Component,  PropTypes } from 'react';
-import { ScrollView, Text, Image, TouchableOpacity,TouchableHighlight, View, } from 'react-native'
+import { ScrollView, Text, Image, TouchableOpacity,TouchableHighlight, View, NavigationExperimental} from 'react-native'
 import styles from './styles'
 import Icon from 'react-native-vector-icons/Ionicons';
 import Unknown from '../Unknown'
-import Member from '../Member'
+import Network from '../Network'
 import Tabs from '../Tabs'
-export default class MenuPanel extends Component {
-  static propTypes = {
-    closeDrawer: PropTypes.func.isRequired
-  };
-// 메뉴 루트 설정
-  constructor(){
-    super()
-    this.state = {
-      page: Tabs
-    }
-  }
-  _getPage(index){
-    let page;
-    switch(index){
-      case 0:
-        page = Tabs;
-        break;
-      case 1:
-        page = Member;
-        break;
-      case 2:
-        page = Unknown;
-        break;
-    }
-    this.setState({
-      page,
-    });
-  }
+
+
+class MenuPanel extends Component {
   render() {
-    let {closeDrawer} = this.props
+
     return (
       <View style={styles.sideMenuContainer}>
-        <View style={styles.control}>
-          <View style={styles.imageCon}>
-            <Image
-              source={require('../../Assets/logo.png')}
-              style={styles.logoimage}/>
-          </View>
-          <TouchableHighlight style={styles.close} onPress={closeDrawer}>
-            <Icon name='ios-close' size={30} color="white" />
-          </TouchableHighlight>
-        </View>
         <TouchableHighlight underlayColor="#888" onPress={()=>{true}}>
             <View style={styles.btn}>
               <Icon style={styles.btnIcon} name="ios-chatbubbles" size={20}></Icon>
@@ -59,7 +25,7 @@ export default class MenuPanel extends Component {
             <Text style={styles.btnText}>인액터스 소개</Text>
           </View>
         </TouchableHighlight>
-        <TouchableHighlight underlayColor="#888" onPress={()=>{true}}>
+        <TouchableHighlight underlayColor="#888" onPress={this.props.onClickNetwork}>
             <View style={styles.btn}>
               <Icon style={styles.btnIcon} name="md-git-network" size={20}></Icon>
               <Text style={styles.btnText}>네트워크</Text>
@@ -110,3 +76,9 @@ export default class MenuPanel extends Component {
     )
   }
 }
+
+MenuPanel.propTypes = {
+	onClickNetwork: React.PropTypes.func.isRequired
+};
+
+export default MenuPanel;

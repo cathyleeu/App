@@ -10,6 +10,8 @@ import React, { Component } from 'react';
 import styles from './styles';
 import { connect } from 'react-redux';
 import Feeds from '../Feeds';
+import MenuPanel from '../MenuPanel'
+import Network from '../Network';
 import Comments from '../Comments';
 import { actions } from 'react-native-navigation-redux-helpers';
 import Icon from 'react-native-vector-icons/Ionicons';
@@ -45,7 +47,7 @@ class Feed extends Component {
 
 	_renderHeader(props) {
 		const showHeader = props.scene.route.title &&
-			(Platform.OS === 'ios' || props.scene.route.key === 'details');
+			(Platform.OS === 'ios' || props.scene.route.key === 'comments')
 
 		if (showHeader) {
 			return (
@@ -109,12 +111,12 @@ class Feed extends Component {
 			const marginTop = Platform.OS === 'ios' ? NavigationHeader.HEIGHT : 0;
 			return (
 				<View style={{ marginTop }}>
-					<Feeds onSelectItem={this._onSelectItem.bind(this)} />
+					<Feeds onSelectComment={this._onSelectComment.bind(this)} />
 				</View>
 			);
 		}
 
-		if (props.scene.route.key === 'details') {
+		if (props.scene.route.key === 'comments') {
 			return (
 				<View style={{ marginTop: NavigationHeader.HEIGHT }}>
 					<Comments />
@@ -133,13 +135,22 @@ class Feed extends Component {
 		}, 'global'));
 	}
 
-	_onSelectItem() {
+	_onSelectComment() {
 		const { dispatch, navigation } = this.props;
 
 		dispatch(pushRoute({
-			key: 'details',
+			key: 'comments',
 			title: 'Comments',
-			showBackButton: true
+			showBackButton: true,
+		}, navigation.key));
+	}
+	_onSelectNetwork() {
+		const { dispatch, navigation } = this.props;
+
+		dispatch(pushRoute({
+			key: 'network',
+			title: 'Network',
+			showBackButton: true,
 		}, navigation.key));
 	}
 }

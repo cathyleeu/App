@@ -1,12 +1,14 @@
 import globalNav from './Components/GlobalNav/reducer';
 import tabs from './Components/Tabs/reducer';
 import feed from './Components/Feed/reducer';
+import menu from './Components/Menu/reducer';
 import { combineReducers } from 'redux-immutable';
 
 const applicationReducers = {
 	globalNav: globalNav,
 	tabs,
-	feed
+	feed,
+	menu
 };
 export default function createReducer() {
 	return combineReducers(applicationReducers);

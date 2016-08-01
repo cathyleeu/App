@@ -4,13 +4,12 @@
  *
  */
 
-import { View } from 'react-native';
+import { View, NavigationExperimental } from 'react-native';
 import React, { Component, PropTypes } from 'react';
 import styles from './styles';
 import GlobalNav from '../GlobalNav';
 import Drawer from 'react-native-drawer'
-import MenuPanel from '../MenuPanel';
-
+import Menu from '../Menu';
 
 class App extends Component {
 	state={
@@ -23,15 +22,17 @@ class App extends Component {
   openDrawer = () => {
     this._drawer.open()
   };
+
 	render() {
 		return (
 			<Drawer
 				ref={(ref) => this._drawer = ref}
 				type="overlay"
 				content={
-					<MenuPanel closeDrawer={this.closeDrawer} />
+					<Menu
+						closeDrawer={this.closeDrawer}
+					 />
 				}
-				acceptDoubleTap
 				styles={{main: {shadowColor: '#000000', shadowOpacity: 0.3, shadowRadius: 15}}}
 				onOpen={() => {
 					console.log('onopen')

@@ -7,12 +7,12 @@ import {
   View
 } from 'react-native';
 
-class Member extends Component {
+class Network extends Component {
   render() {
     return (
       <View style={styles.container}>
         <Text style={styles.welcome}>
-          for Member
+          for Network
         </Text>
       </View>
     );
@@ -33,5 +33,5 @@ const styles = StyleSheet.create({
   },
 });
 
-// module.exports = Member;
-export default Member;
+// module.exports = Network;
+export default Network;

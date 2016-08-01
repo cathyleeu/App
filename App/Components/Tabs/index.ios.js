@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import styles from './styles';
 import Feed from '../Feed';
 import Post from '../Post';
+import Profile from '../Profile';
 import { connect } from 'react-redux';
 import { actions as navigationActions } from 'react-native-navigation-redux-helpers';
 import Icon from 'react-native-vector-icons/Ionicons';
@@ -27,7 +28,8 @@ class Tabs extends Component {
 
 		if (tab.key === 'profile') {
 			return (
-				<View style={[styles.tabContent, {backgroundColor: 'pink'}]} />
+				// <View style={[styles.tabContent, {backgroundColor: 'pink'}]} />
+				<Profile />
 			);
 		}
 

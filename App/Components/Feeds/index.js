@@ -21,7 +21,7 @@ const data = [
 		userName: '익명',
 		userUniv: '익명 대학교',
 		commentTime: '7/26 1:30pm',
-		description: '인액터스 테스트 입니다.인액터스 테스트 입니다.인액터스 테스트 입니다.인액터스 테스트 입니다.인액터스 테스트 입니다.인액터스 테스트 입니다.인액터스 테스트 입니다.인액터스 테스트 입니다. ',
+		description: '인액터스 테스트 입니다. ',
 	},
 	{
 		key: '2',
@@ -72,7 +72,7 @@ const data = [
 class Feeds extends Component {
 	renderSlide(){
 		return(
-			<Swiper style={styles.default} height={200} autoplay={true}>
+			<Swiper style={styles.default} height={200} autoplay={false}>
 				<View style={styles.slide1}>
 					<Image style={styles.image} source={require('../../Assets/Slide.jpg')}/>
 				</View>
@@ -107,7 +107,7 @@ class Feeds extends Component {
 						<View style={styles.funcIcon}>
 							<Icon name="ios-heart-outline" size={23} color="#8899a5" />
 							<Text> 20개 </Text>
-								<TouchableHighlight onPress={this.props.onSelectItem}>
+								<TouchableHighlight onPress={this.props.onSelectComment}>
 								<Icon name="ios-chatboxes-outline" size={23} color="#8899a5" />
 								</TouchableHighlight>
 								<Text> 5개 </Text>
@@ -130,7 +130,7 @@ class Feeds extends Component {
 }
 
 Feeds.propTypes = {
-	onSelectItem: React.PropTypes.func.isRequired
+	onSelectComment: React.PropTypes.func.isRequired
 };
 
 export default Feeds;

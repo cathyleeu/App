@@ -39,22 +39,37 @@ class GlobalNav extends Component {
       />
 		);
 	}
-	_renderScene(props) {
-		if (props.scene.route.key === 'Tabs') {
-			return (
-				<View style={{flex: 1}}>
+	_renderScene(props, route, key) {
+    switch (props.scene.route.key) {
+      case 'Tabs':
+        return(
+        <View style={{flex: 1}}>
 					<Tabs />
 				</View>
-			);
-		}
-
-		if (props.scene.route.key === 'new') {
-			return (
-				<View style={{flex: 1}}>
+      )
+      case 'new':
+        return(
+    		<View style={{flex: 1}}>
 					<NewItem onClose={this._onCloseNewItem.bind(this)} />
 				</View>
-			);
-		}
+      )
+
+    }
+		// if (props.scene.route.key === 'Tabs') {
+		// 	return (
+		// 		<View style={{flex: 1}}>
+		// 			<Tabs />
+		// 		</View>
+		// 	);
+		// }
+
+		// if (props.scene.route.key === 'new') {
+		// 	return (
+		// 		<View style={{flex: 1}}>
+		// 			<NewItem onClose={this._onCloseNewItem.bind(this)} />
+		// 		</View>
+		// 	);
+		// }
 	}
 
 	_renderOverlay(props) {
