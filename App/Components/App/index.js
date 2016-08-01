@@ -9,7 +9,8 @@ import React, { Component, PropTypes } from 'react';
 import styles from './styles';
 import GlobalNav from '../GlobalNav';
 import Drawer from 'react-native-drawer'
-import Menu from '../Menu';
+import MenuPanel from '../MenuPanel';
+import Network from '../Network';
 
 class App extends Component {
 	state={
@@ -22,6 +23,11 @@ class App extends Component {
   openDrawer = () => {
     this._drawer.open()
   };
+	openNetwork(){
+		return(
+			<Network />
+		)
+	}
 
 	render() {
 		return (
@@ -29,8 +35,9 @@ class App extends Component {
 				ref={(ref) => this._drawer = ref}
 				type="overlay"
 				content={
-					<Menu
+					<MenuPanel
 						closeDrawer={this.closeDrawer}
+						openNetwork={this.openNetwork()}
 					 />
 				}
 				styles={{main: {shadowColor: '#000000', shadowOpacity: 0.3, shadowRadius: 15}}}

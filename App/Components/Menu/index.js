@@ -1,3 +1,34 @@
+// import React, { Component } from 'react';
+// import {View, Image, TouchableHighlight} from 'react-native'
+// import MenuPanel from '../MenuPanel'
+// import styles from './styles'
+// import Icon from 'react-native-vector-icons/Ionicons';
+//
+// export default class Menu extends Component {
+// 	render(){
+// 		let {closeDrawer} = this.props
+// 		return(
+// 			<View style={styles.sideMenuContainer}>
+// 				<View style={styles.control}>
+// 					<View style={styles.imageCon}>
+// 						<Image
+// 							source={require('../../Assets/logo.png')}
+// 							style={styles.logoimage}/>
+// 					</View>
+// 					<TouchableHighlight style={styles.close} onPress={closeDrawer}>
+// 						<Icon name='ios-close' size={30} color="white" />
+// 					</TouchableHighlight>
+// 				</View>
+// 				<MenuPanel />
+// 			</View>
+// 		)
+// 	}
+// }
+// Menu.propTypes = {
+// 	onSelectNetwork: React.PropTypes.func.isRequired
+// };
+
+
 import { View, Platform, NavigationExperimental,
 	TouchableHighlight, Image, Text } from 'react-native';
 import React, { Component } from 'react';

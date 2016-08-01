@@ -4,10 +4,8 @@ const initialState = {
 	key: 'feed',
 	index: 0,
 	routes: [
-		{
-			key: 'list',
-			title: 'Enactus'
-		},
+		{ key: 'list', title: 'Enactus' },
+		{ key: 'menupanel' },
 	],
 };
 

@@ -115,6 +115,22 @@ class Feed extends Component {
 				</View>
 			);
 		}
+		if (this.context.drawer.open) {
+			if (props.scene.route.key === 'menupanel') {
+				return (
+					<View style={{ marginTop: NavigationHeader.HEIGHT }}>
+						<MenuPanel onSelectNetwork={this._onSelectNetwork.bind(this)}/>
+					</View>
+				);
+			}
+		}
+		if (props.scene.route.key === 'network') {
+			return (
+				<View style={{ marginTop: NavigationHeader.HEIGHT }}>
+					<Network />
+				</View>
+			);
+		}
 
 		if (props.scene.route.key === 'comments') {
 			return (

@@ -10,9 +10,19 @@ import Tabs from '../Tabs'
 
 class MenuPanel extends Component {
   render() {
-
+    let {closeDrawer} = this.props
     return (
       <View style={styles.sideMenuContainer}>
+        <View style={styles.control}>
+          <View style={styles.imageCon}>
+            <Image
+              source={require('../../Assets/logo.png')}
+              style={styles.logoimage}/>
+          </View>
+          <TouchableHighlight style={styles.close} onPress={closeDrawer}>
+            <Icon name='ios-close' size={30} color="white" />
+          </TouchableHighlight>
+        </View>
         <TouchableHighlight underlayColor="#888" onPress={()=>{true}}>
             <View style={styles.btn}>
               <Icon style={styles.btnIcon} name="ios-chatbubbles" size={20}></Icon>
@@ -25,7 +35,7 @@ class MenuPanel extends Component {
             <Text style={styles.btnText}>인액터스 소개</Text>
           </View>
         </TouchableHighlight>
-        <TouchableHighlight underlayColor="#888" onPress={this.props.onClickNetwork}>
+        <TouchableHighlight underlayColor="#888" onPress={() => {true}}>
             <View style={styles.btn}>
               <Icon style={styles.btnIcon} name="md-git-network" size={20}></Icon>
               <Text style={styles.btnText}>네트워크</Text>
@@ -78,7 +88,7 @@ class MenuPanel extends Component {
 }
 
 MenuPanel.propTypes = {
-	onClickNetwork: React.PropTypes.func.isRequired
+	onSelectNetwork: React.PropTypes.func.isRequired
 };
 
 export default MenuPanel;
