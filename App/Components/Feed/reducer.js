@@ -5,7 +5,6 @@ const initialState = {
 	index: 0,
 	routes: [
 		{ key: 'list', title: 'Enactus' },
-		{ key: 'menupanel' },
 	],
 };
 
