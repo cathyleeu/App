@@ -1,6 +1,6 @@
 'use strict';
 import React, { Component,  PropTypes } from 'react';
-import { ScrollView, Text, Image, TouchableOpacity,TouchableHighlight, View, NavigationExperimental} from 'react-native'
+import { ScrollView, Text, Image, TouchableOpacity,TouchableHighlight, View, Navigator} from 'react-native'
 import styles from './styles'
 import Icon from 'react-native-vector-icons/Ionicons';
 import Unknown from '../Unknown'
@@ -9,6 +9,9 @@ import Tabs from '../Tabs'
 
 
 class MenuPanel extends Component {
+  gotoMenu(navigator, key){
+    navigator.push()
+  }
   render() {
     let {closeDrawer} = this.props
     return (
@@ -87,8 +90,5 @@ class MenuPanel extends Component {
   }
 }
 
-MenuPanel.propTypes = {
-	onSelectNetwork: React.PropTypes.func.isRequired
-};
 
 export default MenuPanel;
