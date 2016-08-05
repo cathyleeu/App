@@ -14,7 +14,6 @@ import MenuPanel from '../MenuPanel'
 import Network from '../Network';
 import Comments from '../Comments';
 import Notification from '../Notification';
-import Drawer from 'react-native-drawer'
 import { actions as navigationActions } from 'react-native-navigation-redux-helpers';
 import Icon from 'react-native-vector-icons/Ionicons';
 const { jumpTo, pushRoute, popRoute } = navigationActions;
@@ -27,48 +26,12 @@ const NavigationHeaderBackButton = require('NavigationHeaderBackButton');
 
 
 class Feed extends Component {
-	state={
-		drawerOpen: false,
-		drawerDisabled: false,
-	};
-	closeDrawer = () => {
-		this._drawer.close()
-	};
-	openDrawer = () => {
-		this._drawer.open()
-	};
-	//
-	// static contextTypes = {
-  //   drawer: React.PropTypes.object.isRequired,
-  // } drawer이 Feed에 있기때문에 없어도 됨...허허
+	static contextTypes = {
+    drawer: React.PropTypes.object.isRequired,
+  }
 
 	render() {
 		return (
-			<Drawer
-				ref={(ref) => this._drawer = ref}
-				type="overlay"
-				content={
-					<MenuPanel
-						closeDrawer={this.closeDrawer}
-						navigator={navigator}
-					 />
-				}
-				styles={{main: {shadowColor: '#000000', shadowOpacity: 0.3, shadowRadius: 15}}}
-				onOpen={() => {
-					console.log('onopen')
-					this.setState({drawerOpen: true})
-				}}
-				onClose={() => {
-					console.log('onclose')
-					this.setState({drawerOpen: false})
-				}}
-				tweenDuration={100}
-				panThreshold={0.08}
-				disabled={this.state.drawerDisabled}
-				openDrawerOffset={0.2}
-				panOpenMask={0.2}
-				negotiatePan
-				>
 					<NavigationCardStack
 						onNavigate={ () => {} }
 						direction={'horizontal'}
@@ -77,7 +40,6 @@ class Feed extends Component {
 						renderOverlay={this._renderHeader.bind(this)}
 						style={styles.main}
 					/>
-			</Drawer>
 		);
 	}
 
@@ -120,7 +82,7 @@ class Feed extends Component {
 			return (
 				<TouchableHighlight
 					style={styles.buttonContainer}
-					onPress={this.openDrawer}>
+					onPress={this.context.drawer.open}>
 					<Icon style={styles.button} name="ios-menu" size={23} color="white" />
 				</TouchableHighlight>
 			);
@@ -170,6 +132,13 @@ class Feed extends Component {
 			return (
 				<View style={{ marginTop: NavigationHeader.HEIGHT }}>
 					<Notification />
+				</View>
+			);
+		}
+		if (props.scene.route.key === 'network') {
+			return (
+				<View style={{ marginTop: NavigationHeader.HEIGHT }}>
+					<Network />
 				</View>
 			);
 		}
