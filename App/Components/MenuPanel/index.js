@@ -11,6 +11,7 @@ const { jumpTo, pushRoute } = navigationActions;
 class MenuPanel extends Component {
   render() {
     let {closeDrawer} = this.props
+
     const onNavigate = (action) => {
       closeDrawer
       this.props.dispatch(action);
@@ -30,14 +31,14 @@ class MenuPanel extends Component {
           </TouchableHighlight>
         </View>
 
-        {this.props.navigation.routes.map( (t, i) => {
+        {this.props.navigation.routes.map( (panel, i) => {
           return (
             <TouchableHighlight underlayColor="#888"
-              onPress={ () => onNavigate(jumpTo(i, navigation.key)) }
-              key={ t.key }>
+              onPress={() => onNavigate(jumpTo(i, navigation.key))}
+              key={ panel.key }>
               <View style={styles.btn}>
-                <Icon style={styles.btnIcon} name={t.name} size={20}></Icon>
-                <Text style={styles.btnText}>{ t.title }</Text>
+                <Icon style={styles.btnIcon} name={panel.name} size={20}></Icon>
+                <Text style={styles.btnText}>{ panel.title }</Text>
               </View>
             </TouchableHighlight>
           );
