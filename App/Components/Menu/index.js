@@ -54,9 +54,6 @@ class Menu extends Component {
     if(props.scene.route.key === 'menupanel'){
       return(
         <View>
-          <Image
-            source={require('../../Assets/logo.png')}
-            style={styles.logoimage}/>
         </View>
       )
     }
@@ -96,12 +93,12 @@ class Menu extends Component {
           <MenuPanel onClickNetwork={this._onClickNetwork.bind(this)}/>
         </View>
       )
-      case 'network':
-        return(
-        <View style={{ marginTop: NavigationHeader.HEIGHT }}>
-          <Network />
-        </View>
-      )
+      // case 'network':
+      //   return(
+      //   <View style={{ marginTop: NavigationHeader.HEIGHT }}>
+      //     <Network />
+      //   </View>
+      // )
     }
   }
   _onClickNetwork() {
@@ -111,7 +108,7 @@ class Menu extends Component {
       key: 'network',
       title: 'Network',
       showBackButton: true,
-    }, navigation.key));
+    }, 'feed'));
   }
 }
 function mapDispatchToProps(dispatch) {

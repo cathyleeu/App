@@ -123,6 +123,13 @@ class Feed extends Component {
 				</View>
 			);
 		}
+		if (props.scene.route.key === 'network') {
+			return (
+				<View style={{ marginTop: NavigationHeader.HEIGHT }}>
+					<Network />
+				</View>
+			);
+		}
 	}
 
 	_onAddItem() {
