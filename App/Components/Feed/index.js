@@ -80,7 +80,7 @@ class Feed extends Component {
 				<NavigationHeaderBackButton onPress={() => dispatch(popRoute(navigation.key))} />
 			);
 		}
-		if (props.scene.route.key === 'list') {
+		if (props.scene.route.key === 'feeds') {
 			return (
 				<TouchableHighlight
 					style={styles.buttonContainer}
@@ -93,7 +93,7 @@ class Feed extends Component {
 	}
 
 	_renderRightComponent(props) {
-		if (props.scene.route.key === 'list') {
+		if (props.scene.route.key === 'feeds') {
 			return (
 				<TouchableHighlight
 					style={styles.buttonContainer}
@@ -107,7 +107,7 @@ class Feed extends Component {
 	}
 
 	_renderScene(props) {
-		if (props.scene.route.key === 'list') {
+		if (props.scene.route.key === 'feeds') {
 			const marginTop = Platform.OS === 'ios' ? NavigationHeader.HEIGHT : 0;
 			return (
 				<View style={{ marginTop }}>
