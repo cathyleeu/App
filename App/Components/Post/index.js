@@ -101,7 +101,9 @@ class Post extends Component {
           placeholderTextColor="#ced8de"
           />
         <View>
-          { this.state.imageSource === null ? <Text style={styles.imageContainer}>사진아 나와라</Text> :
+          { this.state.imageSource === null ?
+            <Text style={styles.imageContainer}>사진아 나와라</Text>
+            :
             <Image style={styles.image} source={this.state.imageSource} />
           }
         </View>

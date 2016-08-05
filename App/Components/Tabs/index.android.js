@@ -31,16 +31,17 @@ class ApplicationTabs extends Component {
 	}
 
 	render() {
-		const onNavigate = (action) => {
-			this.drawer.closeDrawer();
-			this.props.dispatch(action);
+		const onNavigate = (action) => { //어떤 액션을 할 것인지 정의함
+			this.drawer.closeDrawer(); //드로워를 닫고
+			this.props.dispatch(action); //가고자 하는 페이지로 전달함
 		};
 
 		const { navigation } = this.props;
 
 		const navigationView = (
 			<View style={{flex: 1, backgroundColor: '#fff'}}>
-				{this.props.navigation.routes.map( (t, i) => {
+				{this.props.navigation.routes.map( (t, i) => { // object들 맵을 돌리지요~~ reducer의
+					// 메뉴 리스트를 누르면 onNavigate에 정의한 액션이 실행된다.
 					return (
 						<TouchableHighlight
 							onPress={ () => onNavigate(jumpTo(i, navigation.key)) }

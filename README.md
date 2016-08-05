@@ -14,7 +14,7 @@
   * [Brandon Brown]  (https://www.youtube.com/watch?v=y2yabbHIfKk&list=PL7D-0n1z1EbgAoLu1n5wjcMLDDAQqXOMw)
   : basic Routing, Nested Components and Props 등등
   * [Isaac Ben Hutta] (https://www.youtube.com/channel/UC4oTlBBGaXg5zmH-BXhL_ng/playlists)
-  : 로그인 컴포넌트 
+  : 로그인 컴포넌트
 
 2. Blog 참고 사이트
 
@@ -28,3 +28,7 @@
 3. 주요 컴포넌트 기능을 React-native로 구현한 튜토리얼
 [30-days-of-react-native]
 (https://github.com/fangwei716/30-days-of-react-native)
+[메세지 컴포넌트]
+(https://github.com/FaridSafi/react-native-gifted-chat)
+[알람 컴포넌트]
+(https://github.com/zo0r/react-native-push-notification)
