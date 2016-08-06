@@ -9,7 +9,7 @@ import React, { Component } from 'react';
 import styles from './styles';
 import { connect } from 'react-redux';
 import Tabs from '../Tabs';
-import NewItem from '../NewItem';
+import Search from '../Search';
 import { actions } from 'react-native-navigation-redux-helpers';
 
 const {
@@ -47,11 +47,11 @@ class GlobalNav extends Component {
 					<Tabs />
 				</View>
       )
-      case 'new':
+      case 'search':
         return(
-    		<View style={{flex: 1}}>
-					<NewItem onClose={this._onCloseNewItem.bind(this)} />
-				</View>
+        <View style={{flex: 1}}>
+          <Search onClose={this._onClosePad.bind(this)} />
+        </View>
       )
 
     }
@@ -63,20 +63,13 @@ class GlobalNav extends Component {
 		// 	);
 		// }
 
-		// if (props.scene.route.key === 'new') {
-		// 	return (
-		// 		<View style={{flex: 1}}>
-		// 			<NewItem onClose={this._onCloseNewItem.bind(this)} />
-		// 		</View>
-		// 	);
-		// }
 	}
 
 	_renderOverlay(props) {
     return null;
   }
 
-	_onCloseNewItem() {
+	_onClosePad() {
     const { dispatch, navigation } = this.props;
     dispatch(popRoute(navigation.key));
 	}

@@ -9,28 +9,27 @@ import React, { Component, PropTypes } from 'react';
 import styles from './styles';
 import GlobalNav from '../GlobalNav';
 import Drawer from 'react-native-drawer'
-import Menu from '../Menu';
-
+import MenuPanel from '../MenuPanel'
 class App extends Component {
 	state={
-    drawerOpen: false,
-    drawerDisabled: false,
-  };
+		drawerOpen: false,
+		drawerDisabled: false,
+	};
 	closeDrawer = () => {
-    this._drawer.close()
-  };
-  openDrawer = () => {
-    this._drawer.open()
-  };
-
+		this._drawer.close()
+	};
+	openDrawer = () => {
+		this._drawer.open()
+	};
 	render() {
 		return (
 			<Drawer
 				ref={(ref) => this._drawer = ref}
 				type="overlay"
 				content={
-					<Menu
+					<MenuPanel
 						closeDrawer={this.closeDrawer}
+						navigator={navigator}
 					 />
 				}
 				styles={{main: {shadowColor: '#000000', shadowOpacity: 0.3, shadowRadius: 15}}}
@@ -48,11 +47,11 @@ class App extends Component {
 				openDrawerOffset={0.2}
 				panOpenMask={0.2}
 				negotiatePan
-        >
+				>
 				<View style={styles.appContainer}>
 					<GlobalNav />
 				</View>
-      </Drawer>
+			</Drawer>
 		);
 	}
 }
