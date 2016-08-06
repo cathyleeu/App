@@ -78,16 +78,8 @@ class Feed extends Component {
 				<NavigationHeaderBackButton onPress={() => dispatch(popRoute(navigation.key))} />
 			);
 		}
-		if (props.scene.route.key === 'feeds') {
-			return (
-				<TouchableHighlight
-					style={styles.buttonContainer}
-					onPress={this.context.drawer.open}>
-					<Icon style={styles.button} name="ios-menu" size={23} color="white" />
-				</TouchableHighlight>
-			);
-		}
-		if (props.scene.route.key === 'news') {
+		const menuShow = props.scene.route.title
+		if (menuShow) {
 			return (
 				<TouchableHighlight
 					style={styles.buttonContainer}
@@ -100,23 +92,8 @@ class Feed extends Component {
 	}
 
 	_renderRightComponent(props) {
-		if (props.scene.route.key === 'feeds') {
-			return (
-				<View style={{flexDirection:"row"}}>
-					<TouchableHighlight
-						style={styles.buttonContainer}
-						onPress={this._onNotification.bind(this)}>
-						<Icon style={styles.button} name="ios-notifications" size={23} color="white" />
-					</TouchableHighlight>
-					<TouchableHighlight
-						style={styles.buttonContainer}
-						onPress={this._onSearch.bind(this)}>
-						<Icon style={styles.button} name="ios-search" size={23} color="white" />
-					</TouchableHighlight>
-				</View>
-			);
-		}
-		if (props.scene.route.key === 'news') {
+		const rightShow = props.scene.route.key === 'feeds' || props.scene.route.key === 'news'
+		if (rightShow) {
 			return (
 				<View style={{flexDirection:"row"}}>
 					<TouchableHighlight

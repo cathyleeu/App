@@ -31,7 +31,8 @@ class MenuPanel extends Component {
                 dispatch(pushRoute({
                   key: panel.key,
                   title: panel.title,
-                  showBackButton: true
+                  showBackButton: false,
+
                 }, 'feed'))}}
               key={ panel.key }>
               <View style={styles.btn}>

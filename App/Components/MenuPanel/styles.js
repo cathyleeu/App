@@ -21,7 +21,6 @@ export default StyleSheet.create({
     height:30
   },
   control: {
-    resizeMode:"contain",
     backgroundColor: '#5e5e5e',
     height:0.7*Util.size.width/4.1,
     justifyContent:"space-between",
