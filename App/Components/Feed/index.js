@@ -1,9 +1,3 @@
-/*
-*
-* Feed
-*
-*/
-
 import { View, Platform, NavigationExperimental,
 	TouchableHighlight, Image, Text } from 'react-native';
 import React, { Component } from 'react';
@@ -11,7 +5,13 @@ import styles from './styles';
 import { connect } from 'react-redux';
 import Feeds from '../Feeds';
 import MenuPanel from '../MenuPanel'
+import Intro from '../Intro';
 import Network from '../Network';
+import Message from '../Message';
+import Unknown from '../Unknown';
+import Archive from '../Archive';
+import Contact from '../Contact';
+import Config from '../Config';
 import Comments from '../Comments';
 import Notification from '../Notification';
 import { actions as navigationActions } from 'react-native-navigation-redux-helpers';
@@ -87,6 +87,15 @@ class Feed extends Component {
 				</TouchableHighlight>
 			);
 		}
+		if (props.scene.route.key === 'news') {
+			return (
+				<TouchableHighlight
+					style={styles.buttonContainer}
+					onPress={this.context.drawer.open}>
+					<Icon style={styles.button} name="ios-menu" size={23} color="white" />
+				</TouchableHighlight>
+			);
+		}
 		return null;
 	}
 
@@ -107,12 +116,36 @@ class Feed extends Component {
 				</View>
 			);
 		}
+		if (props.scene.route.key === 'news') {
+			return (
+				<View style={{flexDirection:"row"}}>
+					<TouchableHighlight
+						style={styles.buttonContainer}
+						onPress={this._onNotification.bind(this)}>
+						<Icon style={styles.button} name="ios-notifications" size={23} color="white" />
+					</TouchableHighlight>
+					<TouchableHighlight
+						style={styles.buttonContainer}
+						onPress={this._onSearch.bind(this)}>
+						<Icon style={styles.button} name="ios-search" size={23} color="white" />
+					</TouchableHighlight>
+				</View>
+			);
+		}
 
 		return null;
 	}
 
-	_renderScene(props) {
+	_renderScene(props, route, key) {
 		if (props.scene.route.key === 'feeds') {
+			const marginTop = Platform.OS === 'ios' ? NavigationHeader.HEIGHT : 0;
+			return (
+				<View style={{ marginTop }}>
+					<Feeds onSelectComment={this._onSelectComment.bind(this)} />
+				</View>
+			);
+		}
+		if (props.scene.route.key === 'news') {
 			const marginTop = Platform.OS === 'ios' ? NavigationHeader.HEIGHT : 0;
 			return (
 				<View style={{ marginTop }}>
@@ -135,10 +168,52 @@ class Feed extends Component {
 				</View>
 			);
 		}
+		if (props.scene.route.key === 'intro') {
+			return (
+				<View style={{ marginTop: NavigationHeader.HEIGHT }}>
+					<Intro />
+				</View>
+			);
+		}
 		if (props.scene.route.key === 'network') {
 			return (
 				<View style={{ marginTop: NavigationHeader.HEIGHT }}>
 					<Network />
+				</View>
+			);
+		}
+		if (props.scene.route.key === 'message') {
+			return (
+				<View style={{ marginTop: NavigationHeader.HEIGHT }}>
+					<Message />
+				</View>
+			);
+		}
+		if (props.scene.route.key === 'unknown') {
+			return (
+				<View style={{ marginTop: NavigationHeader.HEIGHT }}>
+					<Unknown />
+				</View>
+			);
+		}
+		if (props.scene.route.key === 'archive') {
+			return (
+				<View style={{ marginTop: NavigationHeader.HEIGHT }}>
+					<Archive />
+				</View>
+			);
+		}
+		if (props.scene.route.key === 'contact') {
+			return (
+				<View style={{ marginTop: NavigationHeader.HEIGHT }}>
+					<Contact />
+				</View>
+			);
+		}
+		if (props.scene.route.key === 'config') {
+			return (
+				<View style={{ marginTop: NavigationHeader.HEIGHT }}>
+					<Config />
 				</View>
 			);
 		}

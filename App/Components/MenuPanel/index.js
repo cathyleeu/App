@@ -11,13 +11,6 @@ const { jumpTo, pushRoute } = navigationActions;
 class MenuPanel extends Component {
   render() {
     let {closeDrawer} = this.props
-
-    const onNavigate = (action) => {
-      closeDrawer
-      this.props.dispatch(action);
-    };
-    const { navigation } = this.props;
-
     return (
       <View style={styles.sideMenuContainer}>
         <View style={styles.control}>
@@ -30,11 +23,16 @@ class MenuPanel extends Component {
             <Icon name='ios-close' size={30} color="white" />
           </TouchableHighlight>
         </View>
-
         {this.props.navigation.routes.map( (panel, i) => {
           return (
             <TouchableHighlight underlayColor="#888"
-              onPress={() => onNavigate(jumpTo(i, navigation.key))}
+              onPress={ () => {
+                const { dispatch } = this.props;
+                dispatch(pushRoute({
+                  key: panel.key,
+                  title: panel.title,
+                  showBackButton: true
+                }, 'feed'))}}
               key={ panel.key }>
               <View style={styles.btn}>
                 <Icon style={styles.btnIcon} name={panel.name} size={20}></Icon>
@@ -62,7 +60,27 @@ class MenuPanel extends Component {
 
       </View>
     )
+    console.log(navigation.key)
   }
+  onNavigate(action) {
+    console.log("its working")
+    closeDrawer
+    const { dispatch } = this.props;
+    dispatch(pushRoute({
+      key: panel.key,
+      title: panel.title,
+      showBackButton: true
+    }, 'feed'));
+    // this.props.dispatch(action);
+    // const { dispatch } = this.props;
+    // dispatch(pushRoute({
+    //   key: panel.key,
+    //   title: panel.title,
+    //   showBackButton: true
+    // }, 'feed'));
+    // console.log(navigation.key)
+    // console.log(panel.key)
+  };
 }
 
 

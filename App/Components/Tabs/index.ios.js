@@ -43,7 +43,9 @@ class Tabs extends Component {
 				<Icon.TabBarItem key={tab.key}
 						iconName={tab.iconName}
 						selectedIconName={tab.selectedIconName}
-						title={tab.title} onPress={ () => dispatch(jumpTo(i, navigation.key)) }
+						title={tab.title} onPress={ () => {
+							console.log(navigation.key)
+							dispatch(jumpTo(i, navigation.key)) }}
 						selected={this.props.navigation.index === i}>
 						{ this._renderTabContent(tab) }
 				</Icon.TabBarItem>
