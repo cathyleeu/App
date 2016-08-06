@@ -1,9 +1,3 @@
-/*
-*
-* Feed
-*
-*/
-
 import { View, Platform, NavigationExperimental,
 	TouchableHighlight, Image, Text } from 'react-native';
 import React, { Component } from 'react';
@@ -11,21 +5,25 @@ import styles from './styles';
 import { connect } from 'react-redux';
 import Feeds from '../Feeds';
 import MenuPanel from '../MenuPanel'
+import Intro from '../Intro';
 import Network from '../Network';
+import Message from '../Message';
+import Unknown from '../Unknown';
+import Archive from '../Archive';
+import Contact from '../Contact';
+import Config from '../Config';
 import Comments from '../Comments';
-import { actions } from 'react-native-navigation-redux-helpers';
+import Notification from '../Notification';
+import { actions as navigationActions } from 'react-native-navigation-redux-helpers';
 import Icon from 'react-native-vector-icons/Ionicons';
-
-const {
-  popRoute,
-  pushRoute
-} = actions;
+const { jumpTo, pushRoute, popRoute } = navigationActions;
 
 const {
 	Header: NavigationHeader,
 	CardStack: NavigationCardStack
 } = NavigationExperimental;
 const NavigationHeaderBackButton = require('NavigationHeaderBackButton');
+
 
 class Feed extends Component {
 	static contextTypes = {
@@ -34,14 +32,14 @@ class Feed extends Component {
 
 	render() {
 		return (
-			<NavigationCardStack
-				onNavigate={ () => {} }
-				direction={'horizontal'}
-				navigationState={this.props.navigation}
-				renderScene={this._renderScene.bind(this)}
-				renderOverlay={this._renderHeader.bind(this)}
-				style={styles.main}
-			/>
+					<NavigationCardStack
+						onNavigate={ () => {} }
+						direction={'horizontal'}
+						navigationState={this.props.navigation}
+						renderScene={this._renderScene.bind(this)}
+						renderOverlay={this._renderHeader.bind(this)}
+						style={styles.main}
+					/>
 		);
 	}
 
@@ -80,7 +78,16 @@ class Feed extends Component {
 				<NavigationHeaderBackButton onPress={() => dispatch(popRoute(navigation.key))} />
 			);
 		}
-		if (props.scene.route.key === 'list') {
+		if (props.scene.route.key === 'feeds') {
+			return (
+				<TouchableHighlight
+					style={styles.buttonContainer}
+					onPress={this.context.drawer.open}>
+					<Icon style={styles.button} name="ios-menu" size={23} color="white" />
+				</TouchableHighlight>
+			);
+		}
+		if (props.scene.route.key === 'news') {
 			return (
 				<TouchableHighlight
 					style={styles.buttonContainer}
@@ -93,21 +100,52 @@ class Feed extends Component {
 	}
 
 	_renderRightComponent(props) {
-		if (props.scene.route.key === 'list') {
+		if (props.scene.route.key === 'feeds') {
 			return (
-				<TouchableHighlight
-					style={styles.buttonContainer}
-					onPress={this._onAddItem.bind(this)}>
-					<Icon style={styles.button} name="ios-create" size={23} color="white" />
-				</TouchableHighlight>
+				<View style={{flexDirection:"row"}}>
+					<TouchableHighlight
+						style={styles.buttonContainer}
+						onPress={this._onNotification.bind(this)}>
+						<Icon style={styles.button} name="ios-notifications" size={23} color="white" />
+					</TouchableHighlight>
+					<TouchableHighlight
+						style={styles.buttonContainer}
+						onPress={this._onSearch.bind(this)}>
+						<Icon style={styles.button} name="ios-search" size={23} color="white" />
+					</TouchableHighlight>
+				</View>
+			);
+		}
+		if (props.scene.route.key === 'news') {
+			return (
+				<View style={{flexDirection:"row"}}>
+					<TouchableHighlight
+						style={styles.buttonContainer}
+						onPress={this._onNotification.bind(this)}>
+						<Icon style={styles.button} name="ios-notifications" size={23} color="white" />
+					</TouchableHighlight>
+					<TouchableHighlight
+						style={styles.buttonContainer}
+						onPress={this._onSearch.bind(this)}>
+						<Icon style={styles.button} name="ios-search" size={23} color="white" />
+					</TouchableHighlight>
+				</View>
 			);
 		}
 
 		return null;
 	}
 
-	_renderScene(props) {
-		if (props.scene.route.key === 'list') {
+	_renderScene(props, route, key) {
+		if (props.scene.route.key === 'feeds') {
+			const marginTop = Platform.OS === 'ios' ? NavigationHeader.HEIGHT : 0;
+			return (
+				<View style={{ marginTop }}>
+					<Feeds onSelectComment={this._onSelectComment.bind(this)} />
+				</View>
+			);
+		}
+		if (props.scene.route.key === 'news') {
 			const marginTop = Platform.OS === 'ios' ? NavigationHeader.HEIGHT : 0;
 			return (
 				<View style={{ marginTop }}>
@@ -123,6 +161,20 @@ class Feed extends Component {
 				</View>
 			);
 		}
+		if (props.scene.route.key === 'notification') {
+			return (
+				<View style={{ marginTop: NavigationHeader.HEIGHT }}>
+					<Notification />
+				</View>
+			);
+		}
+		if (props.scene.route.key === 'intro') {
+			return (
+				<View style={{ marginTop: NavigationHeader.HEIGHT }}>
+					<Intro />
+				</View>
+			);
+		}
 		if (props.scene.route.key === 'network') {
 			return (
 				<View style={{ marginTop: NavigationHeader.HEIGHT }}>
@@ -130,14 +182,58 @@ class Feed extends Component {
 				</View>
 			);
 		}
+		if (props.scene.route.key === 'message') {
+			return (
+				<View style={{ marginTop: NavigationHeader.HEIGHT }}>
+					<Message />
+				</View>
+			);
+		}
+		if (props.scene.route.key === 'unknown') {
+			return (
+				<View style={{ marginTop: NavigationHeader.HEIGHT }}>
+					<Unknown />
+				</View>
+			);
+		}
+		if (props.scene.route.key === 'archive') {
+			return (
+				<View style={{ marginTop: NavigationHeader.HEIGHT }}>
+					<Archive />
+				</View>
+			);
+		}
+		if (props.scene.route.key === 'contact') {
+			return (
+				<View style={{ marginTop: NavigationHeader.HEIGHT }}>
+					<Contact />
+				</View>
+			);
+		}
+		if (props.scene.route.key === 'config') {
+			return (
+				<View style={{ marginTop: NavigationHeader.HEIGHT }}>
+					<Config />
+				</View>
+			);
+		}
 	}
 
-	_onAddItem() {
+	_onNotification() {
+		const { dispatch, navigation } = this.props;
+
+		dispatch(pushRoute({
+			key: 'notification',
+			title: '알림',
+			showBackButton: true
+		}, navigation.key));
+	}
+	_onSearch() {
 		const { dispatch } = this.props;
 
 		dispatch(pushRoute({
-			key: 'new',
-			title: 'Main Screen',
+			key: 'search',
+			title: 'search',
 			showBackButton: true
 		}, 'global'));
 	}
@@ -148,15 +244,6 @@ class Feed extends Component {
 		dispatch(pushRoute({
 			key: 'comments',
 			title: 'Comments',
-			showBackButton: true,
-		}, navigation.key));
-	}
-	_onSelectNetwork() {
-		const { dispatch, navigation } = this.props;
-
-		dispatch(pushRoute({
-			key: 'network',
-			title: 'Network',
 			showBackButton: true,
 		}, navigation.key));
 	}
