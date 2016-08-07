@@ -32,9 +32,14 @@ class ImagePicker extends Component {
           <TouchableOpacity onPress={this.props.onClose}>
             <Text style={styles.text}>취소</Text>
           </TouchableOpacity>
-          <TouchableOpacity>
-            <Text style={styles.text}><Text style={styles.bold}>{this.state.num}</Text>선택</Text>
-          </TouchableOpacity>
+          { this.state.selected.length === 0
+            ?
+              <Text style={styles.text}><Text style={styles.bold}>{this.state.num}</Text>선택</Text>
+            :
+            <TouchableOpacity onPress={() => {true}}>
+              <Text style={styles.text}><Text style={styles.bold}>{this.state.num}</Text>선택</Text>
+            </TouchableOpacity>
+          }
         </View>
         <CameraRollPicker
           groupTypes='SavedPhotos'

@@ -8,13 +8,12 @@ import styles from './styles'
 import Camera from './camera';
 
 class Post extends Component {
-  // onCamera(){
-  //   return (
-  //     <View>
-  //       <Camera />
-  //     </View>
-  //   )
-  // }
+  constructor(props){
+    super(props)
+    this.state = {
+      imageSource: null,
+    }
+  }
   render() {
     return (
       <View style={styles.container}>
@@ -29,7 +28,11 @@ class Post extends Component {
           selectionColor="#2aa2ef"
           placeholderTextColor="#ced8de"
           />
-
+        <View>
+          { this.state.imageSource === null ? <Text style={styles.imageContainer}>사진없음</Text> :
+            <Image style={styles.image} source={this.state.imageSource} />
+          }
+        </View>
         <View style={styles.funcContainer}>
           <View style={styles.funcIconCon}>
             <View style={styles.funcIcon}>
@@ -55,11 +58,14 @@ class Post extends Component {
 Post.propTypes = {
 	onCamera: React.PropTypes.func.isRequired,
   onImagePicker: React.PropTypes.func.isRequired,
+  
 };
 
 export default Post;
 
 // module.exports = Post
+
+
 
 
 

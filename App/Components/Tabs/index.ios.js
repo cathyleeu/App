@@ -19,6 +19,8 @@ class Tabs extends Component {
 				<Post
 					onCamera={this._onCamera.bind(this)}
 					onImagePicker={this._onImagePicker.bind(this)}
+					
+
 				/>
 			);
 		}
