@@ -16,7 +16,10 @@ class Tabs extends Component {
 
 		if (tab.key === 'post') {
 			return (
-				<Post onCamera={this._onCamera.bind(this)}/>
+				<Post
+					onCamera={this._onCamera.bind(this)}
+					onImagePicker={this._onImagePicker.bind(this)}
+				/>
 			);
 		}
 
@@ -61,6 +64,15 @@ class Tabs extends Component {
 		dispatch(pushRoute({
 			key: 'camera',
 			title: 'camera',
+			showBackButton: false
+		}, 'global'));
+	}
+	_onImagePicker() {
+		const { dispatch } = this.props;
+
+		dispatch(pushRoute({
+			key: 'picker',
+			title: 'picker',
 			showBackButton: false
 		}, 'global'));
 	}

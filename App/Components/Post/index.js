@@ -37,7 +37,9 @@ class Post extends Component {
               <TouchableOpacity onPress={this.props.onCamera}>
                 <Icon name="ios-camera" size={23} color="#8899a5" />
               </TouchableOpacity>
-              <Icon name="ios-image" size={23} color="#8899a5" />
+              <TouchableOpacity onPress={this.props.onImagePicker}>
+                <Icon name="ios-image" size={23} color="#8899a5" />
+              </TouchableOpacity>
             </View>
             <View style={styles.funcBtn}>
               <TouchableHighlight style={styles.activeBtn}>
@@ -51,31 +53,14 @@ class Post extends Component {
   }
 }
 Post.propTypes = {
-	onCamera: React.PropTypes.func.isRequired
+	onCamera: React.PropTypes.func.isRequired,
+  onImagePicker: React.PropTypes.func.isRequired,
 };
 
 export default Post;
 
 // module.exports = Post
 
-// <CameraRollPicker
-//   groupTypes='SavedPhotos'
-//   batchSize={5}
-//   maximum={5}
-//   selected={this.state.selected}
-//   assetType='Photos'
-//   imagesPerRow={3}
-//   imageMargin={1}
-//   callback={this.getSelectedImages.bind(this)} />
-
-//
-// <View style={styles.imageGrid}>
-//   <View style={styles.imageIcon}><Icon name="ios-camera" size={80} color="#a9a9a9" /></View>
-//   {this.state.images.map((image, index) =>
-//       <View key={index} style={styles.imageIcon}>
-//         <Image style={styles.image} source={{ uri: image.uri }} />
-//       </View> )}
-// </View>
 
 
 
