@@ -10,6 +10,7 @@ import styles from './styles';
 import { connect } from 'react-redux';
 import Tabs from '../Tabs';
 import Search from '../Search';
+import Camera from '../Post/camera'
 import { actions } from 'react-native-navigation-redux-helpers';
 
 const {
@@ -51,6 +52,12 @@ class GlobalNav extends Component {
         return(
         <View style={{flex: 1}}>
           <Search onClose={this._onClosePad.bind(this)} />
+        </View>
+      )
+      case 'camera':
+        return(
+        <View style={{flex: 1}}>
+          <Camera onClose={this._onClosePad.bind(this)} />
         </View>
       )
 

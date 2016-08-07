@@ -2,6 +2,14 @@ import Util from '../utils';
 import { StyleSheet } from 'react-native';
 
 export default StyleSheet.create({
+  cameraContain: {
+    flex:1
+  },
+  preview: {
+    flex: 1,
+    height:Util.size.height,
+    width:Util.size.width,
+  },
   container:{
     paddingTop:30,
     height:Util.size.height,

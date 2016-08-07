@@ -5,87 +5,16 @@ import { Image, TextInput, Text, CameraRoll, View, TouchableHighlight, Touchable
 import ImagePicker from 'react-native-image-picker';
 import Icon from 'react-native-vector-icons/Ionicons';
 import styles from './styles'
+import Camera from './camera';
 
 class Post extends Component {
-    constructor(props){
-      super(props)
-      this.state = {
-        imageSource: null,
-        videoSource: null
-      }
-    }
-
-    selectPhotoTapped() {
-      const options = {
-        title: '사진 골라봐융',
-        quality: 1.0,
-        maxWidth: 500,
-        maxHeight: 500,
-        storageOptions: {
-          skipBackup: true
-        }
-      };
-
-      ImagePicker.showImagePicker(options, (response) => {
-        console.log('Response = ', response);
-
-        if (response.didCancel) {
-          console.log('User cancelled photo picker');
-        }
-        else if (response.error) {
-          console.log('ImagePicker Error: ', response.error);
-        }
-        else if (response.customButton) {
-          console.log('User tapped custom button: ', response.customButton);
-        }
-        else {
-          var source;
-
-          // You can display the image using either:
-          source = {uri: 'data:image/jpeg;base64,' + response.data, isStatic: true};
-
-          // Or:
-          // if (Platform.OS === 'android') {
-          //   source = {uri: response.uri, isStatic: true};
-          // } else {
-          //   source = {uri: response.uri.replace('file://', ''), isStatic: true};
-          // }
-
-          this.setState({
-            imageSource: source
-          });
-        }
-      });
-
-
-    }
-    selectVideoTapped() {
-      const options = {
-        title: 'Video Picker',
-        takePhotoButtonTitle: 'Take Video...',
-        mediaType: 'video',
-        videoQuality: 'medium'
-      };
-
-      ImagePicker.showImagePicker(options, (response) => {
-        console.log('Response = ', response);
-
-        if (response.didCancel) {
-          console.log('User cancelled video picker');
-        }
-        else if (response.error) {
-          console.log('ImagePicker Error: ', response.error);
-        }
-        else if (response.customButton) {
-          console.log('User tapped custom button: ', response.customButton);
-        }
-        else {
-          this.setState({
-            videoSource: response.uri
-          });
-        }
-      });
-    }
+  // onCamera(){
+  //   return (
+  //     <View>
+  //       <Camera />
+  //     </View>
+  //   )
+  // }
   render() {
     return (
       <View style={styles.container}>
@@ -100,16 +29,12 @@ class Post extends Component {
           selectionColor="#2aa2ef"
           placeholderTextColor="#ced8de"
           />
-        <View>
-          { this.state.imageSource === null ? <Text style={styles.imageContainer}>사진아 나와라</Text> :
-            <Image style={styles.image} source={this.state.imageSource} />
-          }
-        </View>
+
         <View style={styles.funcContainer}>
           <View style={styles.funcIconCon}>
             <View style={styles.funcIcon}>
               <Icon name="ios-navigate" size={23} color="#8899a5" />
-              <TouchableOpacity onPress={this.selectPhotoTapped.bind(this)}>
+              <TouchableOpacity onPress={this.props.onCamera}>
                 <Icon name="ios-camera" size={23} color="#8899a5" />
               </TouchableOpacity>
               <Icon name="ios-image" size={23} color="#8899a5" />
@@ -125,7 +50,9 @@ class Post extends Component {
     );
   }
 }
-
+Post.propTypes = {
+	onCamera: React.PropTypes.func.isRequired
+};
 
 export default Post;
 
@@ -148,4 +75,17 @@ export default Post;
 //       <View key={index} style={styles.imageIcon}>
 //         <Image style={styles.image} source={{ uri: image.uri }} />
 //       </View> )}
+// </View>
+
+
+
+
+
+
+// 이미전 소스 전달
+
+// <View>
+//   { this.state.imageSource === null ? <Text style={styles.imageContainer}>사진아 나와라</Text> :
+//     <Image style={styles.image} source={this.state.imageSource} />
+//   }
 // </View>
