@@ -2,54 +2,8 @@ import React, { Component } from 'react';
 import { Image, StatusBar, StyleSheet, TouchableOpacity, View, } from 'react-native';
 import Camera from 'react-native-camera';
 import Icon from 'react-native-vector-icons/Ionicons';
+import styles from './styles.camera'
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-  preview: {
-    flex: 1,
-    justifyContent: 'flex-end',
-    alignItems: 'center',
-  },
-  overlay: {
-    position: 'absolute',
-    padding: 16,
-    right: 0,
-    left: 0,
-    alignItems: 'center',
-  },
-  topOverlay: {
-    top: 0,
-    flex: 1,
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-  },
-  bottomOverlay: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    bottom: 0,
-    backgroundColor: 'rgba(0,0,0,0.4)',
-  },
-  captureButton: {
-    padding: 15,
-    backgroundColor: 'white',
-    borderRadius: 40,
-    alignSelf: 'center',
-  },
-  cancelIcon: {
-    flex: 1,
-    bottom: 0,
-    left: 20,
-  },
-  typeButton: {
-    padding: 5,
-  },
-  flashButton: {
-    padding: 5,
-  },
-});
 
 class TakePhoto extends Component {
   constructor(props) {
@@ -166,17 +120,17 @@ class TakePhoto extends Component {
         />
         <View style={[styles.overlay, styles.topOverlay]}>
           <TouchableOpacity
-            style={styles.typeButton}
-            onPress={this.switchType}
-          >
-            <Image source={this.typeIcon} />
-          </TouchableOpacity>
-          <TouchableOpacity
             style={styles.flashButton}
             onPress={this.switchFlash}
           >
             <Image source={this.flashIcon}
             />
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={styles.typeButton}
+            onPress={this.switchType}
+          >
+            <Image source={this.typeIcon} />
           </TouchableOpacity>
         </View>
         <View style={[styles.overlay, styles.bottomOverlay]}>
