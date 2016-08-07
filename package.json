@@ -10,6 +10,7 @@
     "immutable": "^3.8.1",
     "react": "15.2.1",
     "react-native": "0.29.2",
+    "react-native-camera": "github:lwansbrough/react-native-camera",
     "react-native-camera-roll-picker": "^1.1.6",
     "react-native-drawer": "^2.2.6",
     "react-native-image-picker": "^0.21.2",

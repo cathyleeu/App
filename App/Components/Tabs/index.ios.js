@@ -8,7 +8,7 @@ import { connect } from 'react-redux';
 import { actions as navigationActions } from 'react-native-navigation-redux-helpers';
 import Icon from 'react-native-vector-icons/Ionicons';
 
-const { jumpTo } = navigationActions;
+const { jumpTo, pushRoute, popRoute } = navigationActions;
 
 class Tabs extends Component {
 	// 탭 key가 '##'라면 이 페이지를 넘겨라는 라우터 설정
@@ -16,7 +16,7 @@ class Tabs extends Component {
 
 		if (tab.key === 'post') {
 			return (
-				<Post />
+				<Post onCamera={this._onCamera.bind(this)}/>
 			);
 		}
 
@@ -54,6 +54,15 @@ class Tabs extends Component {
 				{children}
 			</TabBarIOS>
 		);
+	}
+	_onCamera() {
+		const { dispatch } = this.props;
+
+		dispatch(pushRoute({
+			key: 'camera',
+			title: 'camera',
+			showBackButton: false
+		}, 'global'));
 	}
 }
 
