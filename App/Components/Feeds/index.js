@@ -58,13 +58,6 @@ const data = [
 		commentTime: '7/23 1:10pm',
 		description: 'Description 6',
 	},
-	{
-		key: '7',
-		userName: '이유경',
-		userUniv: '명지 대학교',
-		commentTime: '7/22 10:10pm',
-		description: 'Description 7',
-	}
 ].map(d => Object.assign(d, {
 	image: require('../../Assets/user.png')
 }));

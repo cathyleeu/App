@@ -10,7 +10,7 @@ class Network extends Component {
   constructor(){
     super()
 
-    const stateData = {"AL": "Alabama","AK": "Alaska","AS": "American Samoa","AZ": "Arizona","AR": "Arkansas","CA": "California","CO": "Colorado","CT": "Connecticut","DE": "Delaware","DC": "District Of Columbia","FM": "Federated States Of Micronesia","FL": "Florida","GA": "Georgia","GU": "Guam","HI": "Hawaii","ID": "Idaho","IL": "Illinois","IN": "Indiana","IA": "Iowa","KS": "Kansas","KY": "Kentucky","LA": "Louisiana","ME": "Maine","MH": "Marshall Islands","MD": "Maryland","MA": "Massachusetts","MI": "Michigan","MN": "Minnesota","MS": "Mississippi","MO": "Missouri","MT": "Montana","NE": "Nebraska","NV": "Nevada","NH": "New Hampshire","NJ": "New Jersey","NM": "New Mexico","NY": "New York","NC": "North Carolina","ND": "North Dakota","MP": "Northern Mariana Islands","OH": "Ohio","OK": "Oklahoma","OR": "Oregon","PW": "Palau","PA": "Pennsylvania","PR": "Puerto Rico","RI": "Rhode Island","SC": "South Carolina","SD": "South Dakota","TN": "Tennessee","TX": "Texas","UT": "Utah","VT": "Vermont","VI": "Virgin Islands","VA": "Virginia","WA": "Washington","WV": "West Virginia","WI": "Wisconsin","WY": "Wyoming"}
+    const stateData = {"연세대": "강동웅","한국외대": "김정대","연세대": "김정규","연세대": "이영인","숭실대": "이고은","건국대": "공성원","명지대": "이충훈","숭실대": "문지현","성균관대": "차지환","수원대": "김명보","세종대": "유이경","한국외대": "윤나리","이화여대": "김민수","동국대": "임승범","성균관대": "하효원","이화여대": "허정인","성균관대": "박민규","성균관대": "조원호"}
     this.states = [];
     for (let key in stateData) {
       if (stateData.hasOwnProperty(key)) {
@@ -32,7 +32,17 @@ class Network extends Component {
 
   render() {
     const statesList = this.state.states.map(function(elem, index) {
-     return <View key={index} style={styles.list}><Text style={styles.text}>{elem}</Text></View>;
+     return (
+       <View key={index} style={styles.list}>
+        <Image source={require('./assets/lion.jpeg')} style={styles.userImage}/>
+        <View style={styles.userList}>
+          <Text style={styles.text}>{elem}</Text>
+        </View>
+        <TouchableHighlight style={styles.activeBtn}  >
+          <Text style={styles.activeBtnText}>메세지 보내기</Text>
+        </TouchableHighlight>
+       </View>
+     )
    })
 
    return(
