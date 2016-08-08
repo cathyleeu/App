@@ -32,8 +32,8 @@ export default StyleSheet.create({
   btn:{
     flexDirection:"row",
     alignItems:"center",
-    paddingTop:15,
-    paddingBottom:15,
+    paddingTop:13,
+    paddingBottom:13,
     backgroundColor:"#fff",
     borderBottomWidth: 1,
     borderBottomColor: "#f2f2f2"

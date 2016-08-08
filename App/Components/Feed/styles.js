@@ -14,5 +14,11 @@ export default StyleSheet.create({
 		height: 24,
 		width: 24,
 		margin: Platform.OS === 'ios' ? 10 : 16,
-	}
+	},
+	menu: {
+		height: 24,
+		width: 24,
+		marginLeft:15,
+	},
+
 });

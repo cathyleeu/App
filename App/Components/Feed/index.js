@@ -13,6 +13,7 @@ import Archive from '../Archive';
 import Contact from '../Contact';
 import Config from '../Config';
 import Comments from '../Comments';
+import Register from '../Register';
 import Notification from '../Notification';
 import { actions as navigationActions } from 'react-native-navigation-redux-helpers';
 import Icon from 'react-native-vector-icons/Ionicons';
@@ -84,7 +85,7 @@ class Feed extends Component {
 				<TouchableHighlight
 					style={styles.buttonContainer}
 					onPress={this.context.drawer.open}>
-					<Icon style={styles.button} name="ios-menu" size={23} color="white" />
+					<Icon style={styles.menu} name="ios-menu" size={23} color="white" />
 				</TouchableHighlight>
 			);
 		}
@@ -191,6 +192,13 @@ class Feed extends Component {
 			return (
 				<View style={{ marginTop: NavigationHeader.HEIGHT }}>
 					<Config />
+				</View>
+			);
+		}
+		if (props.scene.route.key === 'register') {
+			return (
+				<View style={{ marginTop: NavigationHeader.HEIGHT }}>
+					<Register />
 				</View>
 			);
 		}
