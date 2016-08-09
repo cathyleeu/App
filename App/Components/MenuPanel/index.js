@@ -27,6 +27,8 @@ class MenuPanel extends Component {
           return (
             <TouchableHighlight underlayColor="#888"
               onPress={ () => {
+                console.log(this.props);
+                closeDrawer()
                 const { dispatch } = this.props;
                 dispatch(pushRoute({
                   key: panel.key,
