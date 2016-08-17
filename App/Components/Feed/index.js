@@ -13,6 +13,7 @@ import Archive from '../Archive';
 import Contact from '../Contact';
 import Config from '../Config';
 import Comments from '../Comments';
+import Login from '../Register/login';
 import Register from '../Register';
 import Notification from '../Notification';
 import { actions as navigationActions } from 'react-native-navigation-redux-helpers';
@@ -115,7 +116,7 @@ class Feed extends Component {
 	}
 
 	_renderScene(props, route, key) {
-		if (props.scene.route.key === 'feeds') {
+		if (props.scene.route.key === 'feeds' || props.scene.route.key === 'news') {
 			const marginTop = Platform.OS === 'ios' ? NavigationHeader.HEIGHT : 0;
 			return (
 				<View style={{ marginTop }}>
@@ -123,19 +124,17 @@ class Feed extends Component {
 				</View>
 			);
 		}
-		if (props.scene.route.key === 'news') {
-			const marginTop = Platform.OS === 'ios' ? NavigationHeader.HEIGHT : 0;
-			return (
-				<View style={{ marginTop }}>
-					<Feeds onSelectComment={this._onSelectComment.bind(this)} />
-				</View>
-			);
-		}
-
 		if (props.scene.route.key === 'comments') {
 			return (
 				<View style={{ marginTop: NavigationHeader.HEIGHT }}>
 					<Comments />
+				</View>
+			);
+		}
+		if (props.scene.route.key === 'register') {
+			return (
+				<View style={{ marginTop: NavigationHeader.HEIGHT }}>
+					<Register />
 				</View>
 			);
 		}
@@ -195,10 +194,11 @@ class Feed extends Component {
 				</View>
 			);
 		}
-		if (props.scene.route.key === 'register') {
+		if (props.scene.route.key === 'login') {
 			return (
 				<View style={{ marginTop: NavigationHeader.HEIGHT }}>
-					<Register />
+					<Login onSelectRegister={this._onSelectRegister.bind(this)}
+								 onSelectLogin={this._onSelectLogin.bind(this)} />
 				</View>
 			);
 		}
@@ -231,6 +231,19 @@ class Feed extends Component {
 			title: 'Comments',
 			showBackButton: true,
 		}, navigation.key));
+	}
+	_onSelectRegister() {
+		const { dispatch, navigation } = this.props;
+
+		dispatch(pushRoute({
+			key: 'register',
+			title: '회원가입',
+			showBackButton: true,
+		}, navigation.key));
+	}
+	_onSelectLogin(){
+		const { navigation } = this.props;
+		// props.scene.route.key === 'feeds'
 	}
 }
 

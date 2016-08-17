@@ -30,34 +30,7 @@ const data = [
 		commentTime: '7/25 1:10pm',
 		description: '인액터스 테스트 입니다. 2',
 	},
-	{
-		key: '3',
-		userName: '박웅',
-		userUniv: '카이스트',
-		commentTime: '7/25 9:10am',
-		description: '인액터스 테스트 입니다.3 ',
-	},
-	{
-		key: '4',
-		userName: '이유경',
-		userUniv: '명지 대학교',
-		commentTime: '7/25 8:10am',
-		description: '인액터스 테스트 입니다.  4',
-	},
-	{
-		key: '5',
-		userName: '이유경',
-		userUniv: '명지 대학교',
-		commentTime: '7/24 1:10pm',
-		description: '인액터스 테스트 입니다. ',
-	},
-	{
-		key: '6',
-		userName: '이유경',
-		userUniv: '명지 대학교',
-		commentTime: '7/23 1:10pm',
-		description: 'Description 6',
-	},
+
 ].map(d => Object.assign(d, {
 	image: require('../../Assets/user.png')
 }));

@@ -11,7 +11,7 @@ const panel = {
 		{ key: 'archive', name:'md-cloud-download',  title: '아카이브' },
 		{ key: 'contact', name:'ios-mail-outline',  title: '문의' },
 		{ key: 'config', name:'ios-construct', title: '설정' },
-    { key: 'register', name:'ios-unlock', title: '로그인/회원가입' },
+    { key: 'login', name:'ios-unlock', title: '로그인/회원가입' },
     ],
   key: 'Panel',
   index: 0
