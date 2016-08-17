@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { Text, View, TouchableOpacity, Animated } from 'react-native';
 import styles from './styles.TabBar'
+import Icon from 'react-native-vector-icons/Ionicons';
 
-var FacebookTabBar = React.createClass({
+var TabBar = React.createClass({
   selectedTabIcons: [],
   unselectedTabIcons: [],
 
@@ -17,10 +18,10 @@ var FacebookTabBar = React.createClass({
 
     return (
       <TouchableOpacity key={name} onPress={() => this.props.goToPage(page)} style={styles.tab}>
-        <Text color='#3B5998' style={styles.icon}
-              ref={(icon) => { this.selectedTabIcons[page] = icon }}>A</Text>
-        <Text color='#ccc' style={styles.icon}
-              ref={(icon) => { this.unselectedTabIcons[page] = icon }}>B</Text>
+        <Icon name={name} size={30} color='#edc14b' style={styles.icon}
+              ref={(icon) => { this.selectedTabIcons[page] = icon }}/>
+        <Icon name={name} size={30} color='#ccc' style={styles.icon}
+              ref={(icon) => { this.unselectedTabIcons[page] = icon }}/>
       </TouchableOpacity>
     );
   },
@@ -56,7 +57,7 @@ var FacebookTabBar = React.createClass({
       position: 'absolute',
       width: containerWidth / numberOfTabs,
       height: 3,
-      backgroundColor: '#3b5998',
+      backgroundColor: '#edc14b',
       bottom: 0,
     };
 
@@ -75,4 +76,4 @@ var FacebookTabBar = React.createClass({
   },
 });
 
-module.exports = FacebookTabBar;
+module.exports = TabBar;

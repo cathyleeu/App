@@ -4,9 +4,10 @@ import Util from '../utils'
 export default StyleSheet.create({
   tab: {
     flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-    paddingBottom: 10,
+    // alignItems: 'center',
+    // justifyContent: 'center',
+    // padding: 10,
+
   },
   tabs: {
     height: 45,
@@ -20,7 +21,8 @@ export default StyleSheet.create({
   },
   icon: {
     position: 'absolute',
-    top: 0,
-    left: 20,
+    left:35,
+    alignItems: 'center',
+    justifyContent: 'center',
   },
 });
