@@ -11,7 +11,34 @@ class Post extends Component {
   constructor(props){
     super(props)
     this.state = {
-      imageSource: null,
+      username: '이유경',
+      useruniv: '명지대학교',
+      userimg: 'null',
+      content: '',
+      // imageSource: '', =>  prop 이상하다고 오류 메시지 생김 
+    }
+  }
+  async onPostPressed() {
+    try {
+      let response = await fetch('http://localhost:9000/feed',{
+        method: 'POST',
+        headers:
+          {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+          },
+        body: JSON.stringify({
+          username: this.state.username,
+          useruniv: this.state.useruniv,
+          userimg: this.state.userimg,
+          content: this.state.ctx,
+          imageSource: this.state.imageSource
+        })
+      })
+      let res = await response.text()
+    } catch(errors) {
+      let formErrors = JSON.parse(errors);
+      console.log(formErrors)
     }
   }
   render() {
@@ -24,6 +51,7 @@ class Post extends Component {
           ref="textarea"
           style={styles.textArea}
           multiline={true}
+          onChangeText={ (text)=> this.setState({ctx: text}) }
           placeholder="너의 하루를 말해봐봐봡？"
           selectionColor="#2aa2ef"
           placeholderTextColor="#ced8de"
@@ -45,7 +73,7 @@ class Post extends Component {
               </TouchableOpacity>
             </View>
             <View style={styles.funcBtn}>
-              <TouchableHighlight style={styles.activeBtn}>
+              <TouchableHighlight style={styles.activeBtn} onPress={this.onPostPressed.bind(this)}>
                 <Text style={styles.activeBtnText}>Post</Text>
               </TouchableHighlight>
             </View>
@@ -54,11 +82,17 @@ class Post extends Component {
       </View>
     );
   }
+  // _feedPost(){
+  //   fetch("http://localhost:9000/post", {"method": 'POST'})
+  //   .then((response) => response.json())
+  //   .then((responseData) => {
+  //
+  //   })
+  // }
 }
 Post.propTypes = {
 	onCamera: React.PropTypes.func.isRequired,
   onImagePicker: React.PropTypes.func.isRequired,
-  
 };
 
 export default Post;
