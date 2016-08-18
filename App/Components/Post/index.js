@@ -13,9 +13,9 @@ class Post extends Component {
     this.state = {
       username: '이유경',
       useruniv: '명지대학교',
-      userimg: 'null',
-      content: '',
-      // imageSource: '', =>  prop 이상하다고 오류 메시지 생김 
+      userimg: 'Avatar',
+      content: 'hello world',
+      // imageSource: '', =>  prop 이상하다고 오류 메시지 생김
     }
   }
   async onPostPressed() {
@@ -31,8 +31,7 @@ class Post extends Component {
           username: this.state.username,
           useruniv: this.state.useruniv,
           userimg: this.state.userimg,
-          content: this.state.ctx,
-          imageSource: this.state.imageSource
+          content: this.state.content
         })
       })
       let res = await response.text()
