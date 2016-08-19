@@ -14,7 +14,7 @@ class Post extends Component {
       username: '이유경',
       useruniv: '명지대학교',
       userimg: 'Avatar',
-      content: 'hello world',
+      content: '',
       // imageSource: '', =>  prop 이상하다고 오류 메시지 생김
     }
   }
@@ -50,7 +50,7 @@ class Post extends Component {
           ref="textarea"
           style={styles.textArea}
           multiline={true}
-          onChangeText={ (text)=> this.setState({ctx: text}) }
+          onChangeText={ (text)=> this.setState({content: text}) }
           placeholder="너의 하루를 말해봐봐봡？"
           selectionColor="#2aa2ef"
           placeholderTextColor="#ced8de"
