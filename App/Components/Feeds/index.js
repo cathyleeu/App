@@ -59,7 +59,7 @@ class Feeds extends Component {
     return(
       <View style={styles.container}>
 				{this.renderSlide()}
-        <Text style={{marginTop:100}}> 아직 포스팅 된 글이 없습니다.</Text>
+        <Text style={{marginTop:100}}> 포스팅 로딩중</Text>
       </View>
     )
   }

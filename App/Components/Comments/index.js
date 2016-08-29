@@ -5,14 +5,14 @@
  */
 
 import { View, Text, Image } from 'react-native';
-import React, { Component } from 'react';
+import React, { Component, passProps } from 'react';
 import styles from './styles';
 
 
 class Comments extends Component {
 	constructor(props){
 		super(props)
-		// this.passProps = this.props.route.passProps
+		this.passProps = this.props.route.passProps
 	}
 	render() {
 		return (
@@ -23,7 +23,7 @@ class Comments extends Component {
 						style={styles.userImage}
 						/>
 					<View style={styles.feedInfoContainer}>
-						<Text style={styles.feedUser}>이고은</Text>
+						<Text style={styles.feedUser}>{this.passProps.feeds.username}</Text>
 						<Text style={styles.feedUserUniv}>인액 대학교</Text>
 					</View>
 					<Text style={styles.feedUserTime}>8월29일</Text>

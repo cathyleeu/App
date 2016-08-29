@@ -1,6 +1,6 @@
 import { View, Platform, NavigationExperimental,
 	TouchableHighlight, Image, Text } from 'react-native';
-import React, { Component } from 'react';
+import React, { Component, passProps } from 'react';
 import styles from './styles';
 import { connect } from 'react-redux';
 import Feeds from '../Feeds';
@@ -229,7 +229,7 @@ class Feed extends Component {
 		dispatch(pushRoute({
 			key: 'comments',
 			title: 'Comments',
-			// passProps: {feeds: feeds},
+			passProps: {feeds: feeds},
 			showBackButton: true,
 		}, navigation.key));
 	}
