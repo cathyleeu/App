@@ -10,6 +10,10 @@ import styles from './styles';
 
 
 class Comments extends Component {
+	constructor(props){
+		super(props)
+		// this.passProps = this.props.route.passProps
+	}
 	render() {
 		return (
 			<View style={styles.feedContainer}>
@@ -20,12 +24,12 @@ class Comments extends Component {
 						/>
 					<View style={styles.feedInfoContainer}>
 						<Text style={styles.feedUser}>이고은</Text>
-						<Text style={styles.feedUserUniv}>인액터스 대학교</Text>
+						<Text style={styles.feedUserUniv}>인액 대학교</Text>
 					</View>
-					<Text style={styles.feedUserTime}>7/22 2:28pm</Text>
+					<Text style={styles.feedUserTime}>8월29일</Text>
 				</View>
 				<View style={styles.ctxContainer}>
-						<Text style={styles.txtContents}>테스트 중입니다~~~ </Text>
+						<Text style={styles.txtContents}>연결을 기다림</Text>
 				</View>
 			</View>
 		);

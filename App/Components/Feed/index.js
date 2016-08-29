@@ -223,12 +223,13 @@ class Feed extends Component {
 		}, 'global'));
 	}
 
-	_onSelectComment() {
-		const { dispatch, navigation } = this.props;
+	_onSelectComment(feeds) {
+		const { dispatch, navigation} = this.props;
 
 		dispatch(pushRoute({
 			key: 'comments',
 			title: 'Comments',
+			// passProps: {feeds: feeds},
 			showBackButton: true,
 		}, navigation.key));
 	}

@@ -13,28 +13,6 @@ import Util from '../utils'
 import Icon from 'react-native-vector-icons/Ionicons'
 import Swiper from 'react-native-swiper'
 
-// const userTestImage = require('../../Assets/user.png')
-
-// const data = [
-// 	{
-// 		key: '1',
-// 		userName: '익명',
-// 		userUniv: '익명 대학교',
-// 		commentTime: '7/26 1:30pm',
-// 		description: '인액터스 테스트 입니다. ',
-// 	},
-// 	{
-// 		key: '2',
-// 		userName: '이유경',
-// 		userUniv: '명지 대학교',
-// 		commentTime: '7/25 1:10pm',
-// 		description: '인액터스 테스트 입니다. 2',
-// 	},
-//
-// ].map(d => Object.assign(d, {
-// 	image: require('../../Assets/user.png')
-// }));
-
 const REQUEST_URL = "http://localhost:9000/feed"
 
 class Feeds extends Component {
@@ -56,10 +34,11 @@ class Feeds extends Component {
 		.then((response) => response.json())
     .then((responseData) => {
       this.setState({
-        dataSource: this.state.dataSource.cloneWithRows(responseData.data.results),
+        dataSource: this.state.dataSource.cloneWithRows(responseData.feed),
         loaded: true
       })
     })
+		console.log("fectching" + REQUEST_URL)
 	}
 	renderSlide(){
 		return(
@@ -86,10 +65,13 @@ class Feeds extends Component {
   }
 	renderFeeds(feeds){
 		return(
-			<View style={styles.feedsListView} key={feeds._id}>
+			<View style={styles.feedsListView} >
 				<View style={styles.feedContainer}>
 					<View style={styles.feedTopContainer}>
-
+						<Image
+								source={require('../../Assets/user.png')}
+								style={styles.userImage}
+								/>
 						<View style={styles.feedInfoContainer}>
 							<Text style={styles.feedUser}>{feeds.username}</Text>
 							<Text style={styles.feedUserUniv}>{feeds.useruniv}</Text>
@@ -122,13 +104,13 @@ class Feeds extends Component {
 			return this.renderLoadingView()
 		}
 		return (
-			<View>
+			<ScrollView>
 				{this.renderSlide()}
 				<ListView
 					dataSource={this.state.dataSource}
 					renderRow={this.renderFeeds.bind(this)}
 					/>
-			</View>
+			</ScrollView>
 		);
 	}
 }
