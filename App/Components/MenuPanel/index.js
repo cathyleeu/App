@@ -5,10 +5,41 @@ import styles from './styles'
 import Icon from 'react-native-vector-icons/Ionicons';
 import { actions as navigationActions } from 'react-native-navigation-redux-helpers';
 import { connect } from 'react-redux';
+import SafariView from "react-native-safari-view";
 const { jumpTo, pushRoute } = navigationActions;
 
 
 class MenuPanel extends Component {
+  constructor(props){
+    super(props)
+  }
+  _pressfacebook(){
+    SafariView.isAvailable()
+      .then(SafariView.show({
+        url: "https://facebook.com/enactuskoreapage"
+      }))
+      .catch(error => {
+        // Fallback WebView code for iOS 8 and earlier
+      });
+  }
+  _pressyoutube(){
+    SafariView.isAvailable()
+      .then(SafariView.show({
+        url: "https://youtube.com/enactuskorea"
+      }))
+      .catch(error => {
+        // Fallback WebView code for iOS 8 and earlier
+      });
+  }
+  _pressflickr(){
+    SafariView.isAvailable()
+      .then(SafariView.show({
+        url: "https://flickr.com/enactuskorea"
+      }))
+      .catch(error => {
+        // Fallback WebView code for iOS 8 and earlier
+      });
+  }
   render() {
     let {closeDrawer} = this.props
     return (
@@ -49,13 +80,13 @@ class MenuPanel extends Component {
               <Text style={{fontSize: 16}}>Enactus Channel</Text>
             </View>
             <View style={styles.snsContainer} >
-              <TouchableHighlight>
+              <TouchableHighlight onPress={this._pressfacebook}>
                 <Image source={require('../../Assets/facebook.png')} style={styles.snsIcon}/>
               </TouchableHighlight>
-              <TouchableHighlight>
+              <TouchableHighlight onPress={this._pressyoutube}>
                 <Image source={require('../../Assets/youtube.png')} style={styles.snsIcon} />
               </TouchableHighlight>
-              <TouchableHighlight>
+              <TouchableHighlight onPress={this._pressflickr}>
                 <Image source={require('../../Assets/flickr.png')} style={styles.snsIcon}/>
               </TouchableHighlight>
             </View>
