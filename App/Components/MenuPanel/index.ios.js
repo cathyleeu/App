@@ -40,6 +40,24 @@ class MenuPanel extends Component {
         // Fallback WebView code for iOS 8 and earlier
       });
   }
+  _pressIntro(){
+    SafariView.isAvailable()
+      .then(SafariView.show({
+        url: "http://blog.naver.com/enactusblog/220208208280"
+      }))
+      .catch(error => {
+        // Fallback WebView code for iOS 8 and earlier
+      });
+  }
+  _pressArchive(){
+    SafariView.isAvailable()
+      .then(SafariView.show({
+        url: "http://enactuskorea.org/goarchive"
+      }))
+      .catch(error => {
+        // Fallback WebView code for iOS 8 and earlier
+      });
+  }
   render() {
     let {closeDrawer} = this.props
     return (
@@ -61,12 +79,17 @@ class MenuPanel extends Component {
                 console.log(this.props);
                 closeDrawer()
                 const { dispatch } = this.props;
-                dispatch(pushRoute({
-                  key: panel.key,
-                  title: panel.title,
-                  showBackButton: false,
-
-                }, 'feed'))}}
+                if(panel.key === 'intro'){
+                  this._pressIntro()
+                }else if (panel.key === 'archive'){
+                  this._pressArchive()
+                }else{
+                  dispatch(pushRoute({
+                    key: panel.key,
+                    title: panel.title,
+                    showBackButton: false,
+                  }, 'feed'))
+                }}}
               key={ panel.key }>
               <View style={styles.btn}>
                 <Icon style={styles.btnIcon} name={panel.name} size={20}></Icon>
