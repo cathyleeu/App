@@ -72,9 +72,17 @@ class Post extends Component {
               </TouchableOpacity>
             </View>
             <View style={styles.funcBtn}>
-              <TouchableHighlight style={styles.activeBtn} onPress={this.onPostPressed.bind(this)}>
-                <Text style={styles.activeBtnText}>Post</Text>
-              </TouchableHighlight>
+              {
+                this.state.content.length === 0
+                ?
+                <View style={styles.non_activeBtn}>
+                  <Text style={styles.activeBtnText}>Post</Text>
+                </View>
+                :
+                <TouchableHighlight style={styles.activeBtn} onPress={this.onPostPressed.bind(this)}>
+                  <Text style={styles.activeBtnText}>Post</Text>
+                </TouchableHighlight>
+              }
             </View>
           </View>
         </View>

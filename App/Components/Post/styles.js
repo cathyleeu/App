@@ -83,6 +83,14 @@ export default StyleSheet.create({
    borderRadius:6,
    backgroundColor:"#E8B11D"
  },
+ non_activeBtn:{
+   height:35,
+   width:60,
+   alignItems:"center",
+   justifyContent:"center",
+   borderRadius:6,
+   backgroundColor:"#5e5e5e",
+ },
  btnText:{
    color:"#ccd6dd",
    fontSize:14
