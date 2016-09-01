@@ -26,6 +26,28 @@ class Feeds extends Component {
       loaded: false
 		}
 	}
+
+	// 좋아요 Count
+	async countLike(id, type) {
+		try {
+      let response = await fetch('http://localhost:9000/feed/' + type,{
+        method: 'POST',
+        headers:
+          {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+          },
+        body: JSON.stringify({
+          _id: id
+        })
+      })
+      let res = await response.text()
+    } catch(errors) {
+      let formErrors = JSON.parse(errors);
+      console.log(formErrors)
+    }
+	}
+
 	componentDidMount(){
 		this.fetchData();
 	}
@@ -83,18 +105,32 @@ class Feeds extends Component {
 					</View>
 					<View style={styles.likeAndcomment}>
 						<View style={styles.funcIcon}>
-							<Icon name="ios-heart-outline" size={23} color="#8899a5" />
-							<Text> 20개 </Text>
-								<TouchableHighlight onPress={this.props.onSelectComment}>
-								<Icon name="ios-chatboxes-outline" size={23} color="#8899a5" />
-								</TouchableHighlight>
-								<Text> 5개 </Text>
+							<TouchableHighlight onPress={() => {
+									// feeds.likes = feeds.likes + 1;
+									this.countLike(feeds._id, 'incLike');
+								}}>
+								<Icon name="ios-heart" size={23} color="#8899a5" />
+							</TouchableHighlight>
+							<TouchableHighlight onPress={() => {
+									// feeds.likes = feeds.likes - 1;
+									this.countLike(feeds._id, 'decLike');
+								}}>
+								<Icon name="ios-heart-outline" size={23} color="#8899a5" />
+							</TouchableHighlight>
+							<Text> {feeds.likes} 개 </Text>
+
+							<TouchableHighlight onPress={() => {
+								// 1 : 클릭된 feed 정보를 Feed.js로 넘깁니다.
+								this.props.onSelectComment(feeds);
+							}}>
+							<Icon name="ios-chatboxes-outline" size={23} color="#8899a5" />
+							</TouchableHighlight>
+							<Text> {feeds.comment.length}개 </Text>
 						</View>
 						<View style={styles.funcShare}>
 							<Icon name="ios-share-outline" size={23} color="#8899a5" />
 						</View>
 					</View>
-
 				</View>
 			</View>
 		)
