@@ -11,8 +11,11 @@ import styles from './styles';
 
 class Comments extends Component {
 	constructor(props){
-		super(props)
-		// this.passProps = this.props.route.passProps
+		super(props);
+		// Feed.js 에서 보낸 property 데이터를 setState 해줍니다.
+		this.state = {
+			comment: props.passProps
+		}
 	}
 	render() {
 		return (
@@ -23,13 +26,13 @@ class Comments extends Component {
 						style={styles.userImage}
 						/>
 					<View style={styles.feedInfoContainer}>
-						<Text style={styles.feedUser}>이고은</Text>
-						<Text style={styles.feedUserUniv}>인액 대학교</Text>
+						<Text style={styles.feedUser}>{this.state.comment.username}</Text>
+						<Text style={styles.feedUserUniv}>{this.state.comment.useruniv}</Text>
 					</View>
-					<Text style={styles.feedUserTime}>8월29일</Text>
+					<Text style={styles.feedUserTime}>{this.state.comment.posted}</Text>
 				</View>
 				<View style={styles.ctxContainer}>
-						<Text style={styles.txtContents}>연결을 기다림</Text>
+						<Text style={styles.txtContents}>{this.state.comment.content}</Text>
 				</View>
 			</View>
 		);

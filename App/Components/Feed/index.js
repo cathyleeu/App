@@ -119,15 +119,17 @@ class Feed extends Component {
 		if (props.scene.route.key === 'feeds' || props.scene.route.key === 'news') {
 			const marginTop = Platform.OS === 'ios' ? NavigationHeader.HEIGHT : 0;
 			return (
-				<View style={{ marginTop }}>
+				<View style={{ marginTop: NavigationHeader.HEIGHT }}>
 					<Feeds onSelectComment={this._onSelectComment.bind(this)} />
 				</View>
 			);
 		}
 		if (props.scene.route.key === 'comments') {
+			// 3 : passProps에 담아놓은 feed데이터를 Comment 창으로 보냅니다.
 			return (
-				<View style={{ marginTop: NavigationHeader.HEIGHT }}>
-					<Comments />
+				<View style={{ marginTop: NavigationHeader.HEIGHT,paddingTop: 64,
+    marginBottom: 49}}>
+					<Comments passProps={props.scene.route.passProps}/>
 				</View>
 			);
 		}
@@ -225,11 +227,11 @@ class Feed extends Component {
 
 	_onSelectComment(feeds) {
 		const { dispatch, navigation} = this.props;
-
+		// 2 : Feeds.js에서 넘겨준 feed정보를 받아 props.scene.route.passProps 에 담아줍니다.
 		dispatch(pushRoute({
 			key: 'comments',
 			title: 'Comments',
-			// passProps: {feeds: feeds},
+			passProps: feeds,
 			showBackButton: true,
 		}, navigation.key));
 	}
