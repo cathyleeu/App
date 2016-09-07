@@ -13,10 +13,8 @@ export default StyleSheet.create({
     height:40
   },
   feedContainer: {
-    borderWidth: 3,
-    borderColor: '#f2f2f2',
     backgroundColor: 'transparent',
-    marginHorizontal: 40,
+    marginHorizontal: 20,
     borderRadius: 5
   },
   feedTopContainer: {
@@ -74,14 +72,14 @@ export default StyleSheet.create({
     alignSelf: 'center',
   },
   feedsListView: {
-    paddingTop: 20
+    paddingVertical: 10
   },
   likeAndcomment: {
     alignItems:"center",
     justifyContent:"space-between",
     flexDirection:"row",
     borderTopWidth:1,
-    borderTopColor:"#f2f2f2",
+    borderTopColor:"#5e5e5e",
     paddingVertical: 10,
     marginHorizontal: 10
   },

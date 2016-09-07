@@ -9,16 +9,3 @@ function configureStore(initialState = fromJS({ })) {
 }
 
 module.exports = configureStore;
-
-// const url= '191.198.422.101:9000'
-//
-// getMoviesFromApiAsync() {
-// 	return fetch(url)
-// 		.then((response) => response.json())
-// 		.then((responseJson) => {
-// 			return responseJson.movies;
-// 		})
-// 		.catch((error) => {
-// 			console.error(error);
-// 		});
-// }

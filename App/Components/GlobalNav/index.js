@@ -25,7 +25,6 @@ const {
 class GlobalNav extends Component {
 	constructor(props) {
 		super(props);
-
 		this._renderOverlay = this._renderOverlay.bind(this);
 		this._renderScene = this._renderScene.bind(this);
 	}
@@ -33,7 +32,7 @@ class GlobalNav extends Component {
 	render() {
 		return (
       <NavigationCardStack
-        onNavigate={ () => {} }
+        navigationState={this.props.navigation}
         style={styles.main}
         navigationState={this.props.navigation}
         renderOverlay={this._renderOverlay}
@@ -69,14 +68,6 @@ class GlobalNav extends Component {
       )
 
     }
-		// if (props.scene.route.key === 'Tabs') {
-		// 	return (
-		// 		<View style={{flex: 1}}>
-		// 			<Tabs />
-		// 		</View>
-		// 	);
-		// }
-
 	}
 
 	_renderOverlay(props) {

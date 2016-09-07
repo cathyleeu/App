@@ -66,8 +66,9 @@ class Feed extends Component {
 
 	_renderTitleComponent(props) {
 		return (
-			<NavigationHeader.Title >
-				<Text style={{color: 'white'}}>{props.scene.route.title}</Text>
+			<NavigationHeader.Title
+			 	textStyle={{ color: 'white'}}>
+				{props.scene.route.title}
 			</NavigationHeader.Title>
 		);
 	}
@@ -127,7 +128,7 @@ class Feed extends Component {
 		if (props.scene.route.key === 'comments') {
 			// 3 : passProps에 담아놓은 feed데이터를 Comment 창으로 보냅니다.
 			return (
-				<View style={{ marginTop: NavigationHeader.HEIGHT,paddingTop: 64,
+				<View style={{ marginTop: NavigationHeader.HEIGHT,
     marginBottom: 49}}>
 					<Comments passProps={props.scene.route.passProps}/>
 				</View>

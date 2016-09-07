@@ -1,9 +1,3 @@
-/*
- *
- * App
- *
- */
-
 import { View, NavigationExperimental } from 'react-native';
 import React, { Component, PropTypes } from 'react';
 import styles from './styles';
@@ -48,9 +42,7 @@ class App extends Component {
 				panOpenMask={0.2}
 				negotiatePan
 				>
-				<View style={styles.appContainer}>
 					<GlobalNav />
-				</View>
 			</Drawer>
 		);
 	}
